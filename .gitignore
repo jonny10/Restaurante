@@ -2,3 +2,4 @@ node_modules
 package
 package-lock.json
 package.json
+conexao_bd.js
