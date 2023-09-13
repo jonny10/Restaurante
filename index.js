@@ -4,12 +4,16 @@
     const { engine } = require('express-handlebars')
     const admin = require("./routes/admin")
     const path = require('path')
+    const bodyparser = require('body-parser')
 // Configurações
     // Handlebars
         app.engine('handlebars', engine())
         app.set('view engine', 'handlebars')
     // Public
         app.use(express.static(path.join(__dirname, "public")))
+    // Body-Parser
+        app.use(bodyparser.urlencoded({extended: false}))
+        app.use(bodyparser.json())
 
 // Rotas
 app.get("/", (req, res) => {

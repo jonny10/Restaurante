@@ -1,0 +1,148 @@
+/*Definindo que o titulo do grupo prato esteja no centro e tenha uma margem de 30px em baixo*/
+.titulo_prato{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/*Definindo as propriedades divisão onde os itens pratos estarão com o tamanho maximo de 90% do espaço
+do col-8, que sua altura tenha o máximo dependendo das propriedades dentro, que a margem seja automatica
+dependendo do espaço disponivel, que o seu displa é flex e wrap*/
+.pratos{
+    max-width: 90%;
+    height: 100%;
+    margin: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*Que os itens apresentados pelo banco tenham uma margem em baixo de 50px, que o seu tamanho seja 100%
+do espaço, e que sua largura minima é de 350px, e que seus textos fiquem na esquerda*/
+.item{
+    margin-bottom: 5rem ;
+    width: 100%;
+    flex: 1 2 20rem;
+    min-width: 35rem;
+    text-align: left;
+}
+
+/*Definindo que somente os itens do almoço tenham um padding na esquerda de 10%*/
+.pratos .item{
+    padding-left: 10%;
+}
+
+/*Definindo que os paragrafos tenham uma margem em cima e em baixo de 5px e uma fonte de 20px*/
+.item p{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+/*Definindo que as imagens dos itens tenham 300px e uma borda arredondada em 10px*/
+.item img{
+    width: 300px;
+    border-radius: 10px;
+}
+
+/*Definindo que o botão de adicionar o iten a sacola tenha um fundo preto com letra branca
+borda de 2px solido e branco, com um padding de 5px, e 10px nas laterais com a borda arredondada em 20px*/
+.adicionar button{
+    background-color: #000000;
+    color: white;
+    border: 0.2rem solid white;
+    padding: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 2rem;
+}
+
+/*Definindo que quando o botão estiver com o mouse em cima mude o fundo para branco e a letra preta*/
+.adicionar button:hover{
+    background-color: white;
+    color:#000000;
+}
+
+/*Definindo que quando o botão for clicado ele fique com o fundo e letra branca*/
+.adicionar button:active{
+    background-color: white;
+    color: white;
+}
+
+/*Definindo que o titulo do grupo tenha uma margem em baixo de 20px e que a
+borda em baixo com 3px solido e branca*/
+.title_item{
+    margin-bottom: 2rem;
+    border-bottom: 0.3rem solid white;
+}
+
+/*Definindo que os itens que não seja o almoço tenha um padding na esquerda de 20%*/
+.items .item{
+    padding-left: 20%;
+}
+
+/*Definindo que o menu tenha 80% do tamanho disponivel com um padding de 30px, com uma
+borda de 3px solido e branco arredondada em 80px e que sua posicão fique grudada em 21% da página
+e quando deslizado para baixo fique fixo na tela*/
+.menu{
+    width: 80%;
+    padding: 3rem;
+    border: 0.3rem solid white;
+    border-radius: 80px;
+    position: sticky;
+    top: 21%;
+}
+
+/*Definindo que o titulo do menu fique no centro, tenha uma fonte de 35px e uma margem em baixo de 5px*/
+.menu h1{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/*definindo que a lista do menu tenha uma fonte de 30px e uma margem em baixo de 3px*/
+.menu ul{
+    font-size: 3rem;
+    margin-bottom: 0.3rem;
+}
+
+/*Definindo que os links dos itens da lista não tenha uma decoração no texto e seja branco*/
+.menu ul a{
+    text-decoration: none;
+    color: white;
+}
+
+/*Definindo que quando os links da lista estão sendo clicado fique com a letra preta*/
+.menu ul a:active{
+    color: #000000;
+}
+
+.sacola textarea{
+    width: 100%;
+    min-height: 8rem;
+    height: auto;
+}
+
+/*Definindo que a divisão dos botoões do menu sejam flex*/
+.solicitar{
+    display: flex;
+}
+
+/*Definindo que o ultimo botão da divisão tenha uma margem na esquerda
+com o tamnho total disponivel - 150px*/
+.solicitar button:last-child{
+    margin-left: calc(100% - 15rem);
+}
+
+/*Definindo que os botões do menu tenham um fundo preto com a letra branca
+com o tamanho da fonte em 30px e sem borda*/
+.solicitar button{
+    background-color: black;
+    color: white;
+    font-size: 3rem;
+    border: none;
+}
+
+/*Definindo que o botão quando foi clicado mude a letra para preto*/
+.solicitar button:active{
+    color: #000000;
+}
+
