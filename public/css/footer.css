@@ -1,0 +1,22 @@
+.footer{
+    border-top: 0.2rem solid white;
+    color: white;
+    display: flex;
+    font-size: 2rem;
+    padding: 2rem;
+    margin-top: 5rem;
+}
+
+.infos h4{
+    font-size: 2.3rem;
+}
+
+.creditos{
+    margin-bottom: 3rem;
+}
+
+.miniatura{
+    position: absolute;
+    right: 0px;
+    margin-right: 2.5rem;
+}
