@@ -89,6 +89,7 @@ e quando deslizado para baixo fique fixo na tela*/
     border-radius: 80px;
     position: sticky;
     top: 21%;
+    z-index: -1;
 }
 
 /*Definindo que o titulo do menu fique no centro, tenha uma fonte de 35px e uma margem em baixo de 5px*/

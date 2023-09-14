@@ -14,7 +14,6 @@
     // Body-Parser
         app.use(bodyparser.urlencoded({extended: false}))
         app.use(bodyparser.json())
-
 // Rotas
 app.get("/", (req, res) => {
     res.render('home')
@@ -22,24 +21,24 @@ app.get("/", (req, res) => {
 
 app.use ("/admin", admin)
 
-app.get("/informacoes", function(req, res){
-    res.sendfile(__dirname + "/views/informacoes.html")
+app.get("/login", function(req, res){
+    res.render('login')
 })
 
 app.get("/cadastro", function(req, res){
-    res.sendfile()
-})
-
-app.get("/login", function(req, res){
-    res.sendfile()
+    res.render('cadastro')
 })
 
 app.get("/sacola", function(req, res){
     res.sendfile()
 })
 
+app.get("/informacoes", function(req, res){
+    res.render("informacoes")
+})
+
 app.get("/contratamos", function(req, res){
-    res.sendfile()
+    res.render("contratamos")
 })
 
 
