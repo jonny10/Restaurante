@@ -18,4 +18,4 @@ Vou começar inserindo as possiveis rotas e alguns htmls.
 -13/09/23: Continuando a criar o html do home junto ao seu css, usando um pouco de bootstrap, fé né?
 Decidi separar as páginas de css para cada página e também comentei tudo
 
--14/09/23: Bom dia bom dia, começando e decidi fazer o restante das páginas html antes de seguir, ou talves eu já puxe algumas coisas do banco só pra ver como fica, vo vendo, vo começar separando o header que estava no main do handlebars para o um partials de home
+-14/09/23: Bom dia bom dia, começando e decidi fazer o restante das páginas html antes de seguir, ou talves eu já puxe algumas coisas do banco só pra ver como fica, vo vendo, vo começar separando o header que estava no main do handlebars para o um partials de home, com isso vou criar os models do banco de dados

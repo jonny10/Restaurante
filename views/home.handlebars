@@ -12,27 +12,29 @@
         <!--Organizando em uma divisão o grupo de itens-->
         <div class="pratos">
             <!--Uma formatação geral de como ficará os itens trazidos do banco de dados-->
+            {{#each almoco}}
             <div class="item">
                 <!--Uma imagem do item-->
                 <div class="imagem">
-                    <img src="/img/prato1.jfif" alt="logomarca">
+                    <img src='{{imagem_do_item}}' alt="logomarca">
                 </div>
                 <!--Um titulo para o item-->
                 <div class="titulo">
-                    <p>Prato</p>
+                    <p>{{titulo}}</p>
                 </div>
                 <!--A descrição do item-->
                 <div class="descricao">
-                    <p>descrição</p>
+                    <p>{{descricao}}</p>
                 </div>
                 <!--O valor do item-->
                 <div class="valor">
-                    <p>R$ 0,00</p>
+                    <p>R$ {{valor}}</p>
                 </div>
                 <div class="adicionar">
                     <button>Adicionar na sacola</button>
                 </div>
             </div>
+            {{/each}}
         </div>
         <!--Separando os demais items do almoço pois teão uma formatação diferente de duas colunas-->
         <div class="items">
