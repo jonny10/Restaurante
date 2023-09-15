@@ -22,15 +22,21 @@
         app.use(bodyparser.json())
 // Carregando models
     const Item = require("./models/Item")
+
 // Rotas
-app.get("/", (req, res) => {
-    Item.findAll({
+app.get("/", async (req, res) => {
+    const almoco = await Item.findAll({
         where: {
             tipo_id: 1
         }
-    }).then((prato) => {
-        res.render('home', {almoco: prato})
     })
+    const doces = await Item.findAll({
+        where: {
+            tipo_id: 2
+        }
+    })
+
+    res.render('home', {almoco: almoco, doces: doces})
 })
 
 app.use ("/admin", admin)
