@@ -25,18 +25,47 @@
 
 // Rotas
 app.get("/", async (req, res) => {
-    const almoco = await Item.findAll({
-        where: {
-            tipo_id: 1
+    pratos = []
+    doces = []
+    salgados = []
+    lanches = []
+    porcoes = []
+    refri = []
+    cervejas = []
+    const itens = await Item.findAll()
+    for (var i = 0; i < itens.length; i++) {
+        itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(itens[i]['dataValues']['imagem_do_item'], 'binary').toString('base64')
+        if (itens[i]['dataValues']['tipo_id'] == 1){
+            pratos.push(itens[i])
         }
-    })
-    const doces = await Item.findAll({
-        where: {
-            tipo_id: 2
+        if (itens[i]['dataValues']['tipo_id'] == 2){
+            doces.push(itens[i])
         }
+        if (itens[i]['dataValues']['tipo_id'] == 3){
+            salgados.push(itens[i])
+        }
+        if (itens[i]['dataValues']['tipo_id'] == 4){
+            lanches.push(itens[i])
+        }
+        if (itens[i]['dataValues']['tipo_id'] == 5){
+            porcoes.push(itens[i])
+        }
+        if (itens[i]['dataValues']['tipo_id'] == 6){
+            refri.push(itens[i])
+        }
+        if (itens[i]['dataValues']['tipo_id'] == 7){
+            cervejas.push(itens[i])
+        }
+    }
+    res.render('home', {
+        almoco: pratos, 
+        doces: doces,
+        salgados: salgados,
+        lanches: lanches,
+        porcoes: porcoes,
+        refri: refri,
+        cervejas: cervejas
     })
-
-    res.render('home', {almoco: almoco, doces: doces})
 })
 
 app.use ("/admin", admin)
