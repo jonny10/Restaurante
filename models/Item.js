@@ -11,14 +11,16 @@ const Item = banco.define('item', {
     },
     titulo: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: true
+        allowNull: true,
+        unique: false
     },
     descricao: {
         type: DataTypes.TEXT
     },
     tamanho_id: {
         type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
         references: {
             model: Tamanho,
             key: 'id'
@@ -26,7 +28,7 @@ const Item = banco.define('item', {
     },
     tipo_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: Tipo,
             key: 'id'
@@ -40,5 +42,6 @@ const Item = banco.define('item', {
         allowNull: true
     }
 })
+Item.belongsTo(Tamanho, {foreignKey: 'tamanho_id'})
 
 module.exports = Item

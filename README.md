@@ -21,3 +21,7 @@ Decidi separar as páginas de css para cada página e também comentei tudo
 -14/09/23: Bom dia bom dia, começando e decidi fazer o restante das páginas html antes de seguir, ou talves eu já puxe algumas coisas do banco só pra ver como fica, vo vendo, vo começar separando o header que estava no main do handlebars para o um partials de home, com isso vou criar os models do banco de dados
 
 -15/09/23: Bom dia Bom dia, hoje vou tentar passar mais de um select por rota.. AEEEE KRL CONSEGUI, bom após ter finalmente conseguido passar varias querys em uma unica rota, decidi voltar atras e realizar somente uma query e realizar o filtro pelo codigo, para poupar query e linha de codigo
+
+-18/09/2023: Bom dia, passei o dia tentando resolver o problema de como o findall do sequelize reconhecer o foreign key, e como alterar as informações de acordo com o input
+
+-19/09/2023: Dia, ainda sigo tentando resolver as coisas de ontem

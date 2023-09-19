@@ -22,38 +22,47 @@
         app.use(bodyparser.json())
 // Carregando models
     const Item = require("./models/Item")
-
+    const Tamanho = require("./models/Tamanho")
+const { and } = require("sequelize")
 // Rotas
 app.get("/", async (req, res) => {
-    pratos = []
+    pratos = {}
     doces = []
     salgados = []
     lanches = []
     porcoes = []
     refri = []
     cervejas = []
-    const itens = await Item.findAll()
+    radio = []
+    const itens = await Item.findAll({include: Tamanho})
     for (var i = 0; i < itens.length; i++) {
         itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(itens[i]['dataValues']['imagem_do_item'], 'binary').toString('base64')
-        if (itens[i]['dataValues']['tipo_id'] == 1){
-            pratos.push(itens[i])
+        tipo = itens[i]['dataValues']['tipo_id']
+        nome = itens[i]['dataValues']['titulo']
+        id = "btnradio" + itens[i]['dataValues']['id']
+
+        if (tipo == 1){
+            if (!pratos[nome]) {
+                pratos[nome] = [];
+            }
+            pratos[nome].push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 2){
+        if (tipo == 2){
             doces.push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 3){
+        if (tipo == 3){
             salgados.push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 4){
+        if (tipo == 4){
             lanches.push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 5){
+        if (tipo == 5){
             porcoes.push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 6){
+        if (tipo == 6){
             refri.push(itens[i])
         }
-        if (itens[i]['dataValues']['tipo_id'] == 7){
+        if (tipo == 7){
             cervejas.push(itens[i])
         }
     }
@@ -64,7 +73,8 @@ app.get("/", async (req, res) => {
         lanches: lanches,
         porcoes: porcoes,
         refri: refri,
-        cervejas: cervejas
+        cervejas: cervejas,
+        radio: radio
     })
 })
 

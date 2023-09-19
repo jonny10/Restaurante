@@ -14,25 +14,42 @@
             <!--Uma formatação geral de como ficará os itens trazidos do banco de dados-->
             {{#each almoco}}
             <div class="item">
-                <!--Uma imagem do item-->
-                <div class="imagem">
-                    <img src={{imagem_do_item}} alt="logomarca">
+                {{#each this}}
+                <div class="infos{{titulo}}_{{tamanho}}">
+                    <!--Uma imagem do item-->
+                    <div class="imagem">
+                        <img src={{imagem_do_item}} alt="logomarca">
+                    </div>
+                    <!--Um titulo para o item-->
+                    <div class="titulo">
+                        <p>{{titulo}}</p>
+                    </div>
+                    <!--A descrição do item-->
+                    <div class="descricao">
+                        <p>{{descricao}}</p>
+                    </div>
+                    <!--O valor do item-->
+                    <div class="valor">
+                        <p>R$ {{valor}}</p>
+                    </div>
                 </div>
-                <!--Um titulo para o item-->
-                <div class="titulo">
-                    <p>{{titulo}}</p>
+                {{/each}}
+                <form action="/" method="get">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio1" value="infos{{titulo}}_{{tamanho}}" autocomplete="off" checked>
+                    <label class="btn btn-outline-light mb-3" for="btnradio1{{id}}">P</label>
+
+                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio2" value="infos{{titulo}}_{{tamanho}}" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3" for="btnradio2{{id}}">M</label>
+
+                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio3" value="infos{{titulo}}_{{tamanho}}" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3" for="btnradio3{{id}}">G</label>
                 </div>
-                <!--A descrição do item-->
-                <div class="descricao">
-                    <p>{{descricao}}</p>
-                </div>
-                <!--O valor do item-->
-                <div class="valor">
-                    <p>R$ {{valor}}</p>
-                </div>
+                </form>
                 <div class="adicionar">
                     <button>Adicionar na sacola</button>
                 </div>
+                
             </div>
             {{/each}}
         </div>
