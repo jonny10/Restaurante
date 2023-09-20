@@ -23,8 +23,9 @@
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
-const { and } = require("sequelize")
+    const { and } = require("sequelize")
 // Rotas
+titulos = []
 app.get("/", async (req, res) => {
     pratos = {}
     doces = []
@@ -33,19 +34,26 @@ app.get("/", async (req, res) => {
     porcoes = []
     refri = []
     cervejas = []
-    radio = []
+    
     const itens = await Item.findAll({include: Tamanho})
     for (var i = 0; i < itens.length; i++) {
         itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(itens[i]['dataValues']['imagem_do_item'], 'binary').toString('base64')
         tipo = itens[i]['dataValues']['tipo_id']
         nome = itens[i]['dataValues']['titulo']
-        id = "btnradio" + itens[i]['dataValues']['id']
-
+        imagem = itens[i]['dataValues']['imagem_do_item']
+        titulos.push(itens[i]['dataValues']['titulo'])
         if (tipo == 1){
-            if (!pratos[nome]) {
-                pratos[nome] = [];
+            infos = {
+                titulo: nome,
+                imagem_do_item: imagem
             }
-            pratos[nome].push(itens[i])
+            if (!pratos[nome]) {
+                pratos[nome] = {}
+                pratos[nome]['infos'] = []
+                pratos[nome]['infosTamanhos'] = []
+                pratos[nome]['infos'].push(infos)
+            }
+            pratos[nome]['infosTamanhos'].push(itens[i])
         }
         if (tipo == 2){
             doces.push(itens[i])
@@ -73,8 +81,7 @@ app.get("/", async (req, res) => {
         lanches: lanches,
         porcoes: porcoes,
         refri: refri,
-        cervejas: cervejas,
-        radio: radio
+        cervejas: cervejas
     })
 })
 
@@ -106,3 +113,5 @@ port = 8800
 app.listen(port, () => {
     console.log("Servidor Online!")
 })
+
+module.exports = titulos

@@ -25,3 +25,6 @@ Decidi separar as páginas de css para cada página e também comentei tudo
 -18/09/2023: Bom dia, passei o dia tentando resolver o problema de como o findall do sequelize reconhecer o foreign key, e como alterar as informações de acordo com o input
 
 -19/09/2023: Dia, ainda sigo tentando resolver as coisas de ontem
+
+-20/09/2023: to trava na mesma coisinha faz uns 3 dias, mas blz né
+CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho

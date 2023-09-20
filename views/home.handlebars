@@ -11,46 +11,58 @@
     <div class="row">
         <!--Organizando em uma divisão o grupo de itens-->
         <div class="pratos">
+            <!--um each que traz as variaveis do back-end em loop-->
+            {{#each almoco as | almoco |}}
             <!--Uma formatação geral de como ficará os itens trazidos do banco de dados-->
-            {{#each almoco}}
             <div class="item">
-                {{#each this}}
-                <div class="infos{{titulo}}_{{tamanho}}">
-                    <!--Uma imagem do item-->
-                    <div class="imagem">
-                        <img src={{imagem_do_item}} alt="logomarca">
-                    </div>
-                    <!--Um titulo para o item-->
-                    <div class="titulo">
-                        <p>{{titulo}}</p>
-                    </div>
+                <!--Entrando dentro do objeto infos do almoco e nomeando de inf-->
+                {{#each almoco.infos as | inf |}}
+                <!--Uma imagem do item-->
+                <div class="imagem">
+                    <img src={{inf.imagem_do_item}} alt="logomarca">
+                </div>
+                <!--Um titulo para o item-->
+                <div class="titulo">
+                    <p>{{inf.titulo}}</p>
+                </div>
+                <!--Entrnado dentro do objeto infosTamanhos do almoco e nomeando de tamanhos, que trará as informações dos 3 tamanhos-->
+                {{#each almoco.infosTamanhos as | tamanhos |}}
+                <!--Criando uma classe para que eu consiga no javascript esconder e mostrar somente as classes com input selecionado-->
+                <div class="desc tamanho{{tamanhos.tamanho.tamanho}} infos{{tamanhos.titulo}}_{{tamanhos.tamanho.tamanho}}">
                     <!--A descrição do item-->
                     <div class="descricao">
-                        <p>{{descricao}}</p>
+                        <p>{{tamanhos.descricao}}</p>
                     </div>
                     <!--O valor do item-->
                     <div class="valor">
-                        <p>R$ {{valor}}</p>
+                        <p>R$ {{tamanhos.valor}}</p>
                     </div>
                 </div>
+                <!--Fechando o InfosTamanho-->
                 {{/each}}
+                <!--Em breve-->
                 <form action="/" method="get">
+                <!--Criando inputs com o bootstrap para aparecer as classes de acordo com o tamanho selecionado-->
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio1" value="infos{{titulo}}_{{tamanho}}" autocomplete="off" checked>
-                    <label class="btn btn-outline-light mb-3" for="btnradio1{{id}}">P</label>
+                    <!--Input que recebe o name com o titulo do Item e com a função Onclick onde puxa uma função no javascript-->
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio1" value="infos{{titulo}}_1" onclick="mostrarClasse('infos{{inf.titulo}}_P')" autocomplete="off" checked>
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio1">P</label>
 
-                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio2" value="infos{{titulo}}_{{tamanho}}" autocomplete="off">
-                    <label class="btn btn-outline-light mb-3" for="btnradio2{{id}}">M</label>
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio2" value="infos{{titulo}}_2" onclick="mostrarClasse('infos{{inf.titulo}}_M')" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio2">M</label>
 
-                    <input type="radio" class="btn-check" name="btnradio{{titulo}}" id="btnradio3" value="infos{{titulo}}_{{tamanho}}" autocomplete="off">
-                    <label class="btn btn-outline-light mb-3" for="btnradio3{{id}}">G</label>
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio3" value="infos{{titulo}}_3" onclick="mostrarClasse('infos{{inf.titulo}}_G')" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio3">G</label>
                 </div>
                 </form>
+                <!--Em breve-->
                 <div class="adicionar">
                     <button>Adicionar na sacola</button>
                 </div>
-                
+                <!--Fechando o infos-->
+                {{/each}}
             </div>
+            <!--Fechando o almoco-->
             {{/each}}
         </div>
         <!--Separando os demais items do almoço pois teão uma formatação diferente de duas colunas-->
