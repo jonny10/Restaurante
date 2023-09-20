@@ -1,5 +1,5 @@
 const DataTypes = require('sequelize')
-const banco = require("./conexao_bd")
+const banco = require("../conexao_bd")
 
 banco.authenticate().then(function(){
     console.log("sucesso paizão")
