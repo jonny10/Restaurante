@@ -20,4 +20,4 @@ Decidi separar as páginas de css para cada página e também comentei tudo
 
 -14/09/23: Bom dia bom dia, começando e decidi fazer o restante das páginas html antes de seguir, ou talves eu já puxe algumas coisas do banco só pra ver como fica, vo vendo, vo começar separando o header que estava no main do handlebars para o um partials de home
 
--21/09/23: Bom dia, bom dia
+-21/09/23: Bom dia, bom dia. Hoje vou criar as páginas HTML do futuro onde cada uma será do perfil e etc... e também fazer algumas páginas do ADM, faltando só algumas coisinhas para que ilustre novamente o banco de dados nessas novas páginas

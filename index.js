@@ -40,6 +40,13 @@ app.get("/contratamos", function(req, res){
     res.render("contratamos")
 })
 
+app.get("/perfil",(req, res) => {
+    res.render('perfil')
+})
+
+app.get("/pedidos",(req, res) => {
+    res.render('pedidos')
+})
 
 // Outros
 port = 8800

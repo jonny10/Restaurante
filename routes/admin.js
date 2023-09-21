@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-    res.send('página inicial ADM')
+    res.render('admin')
 })
 
 router.get('/adicionar-item', (req, res) => {

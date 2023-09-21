@@ -1,0 +1,48 @@
+.admin{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.admin h2{
+    font-size: 4rem;
+    border-bottom: 0.2rem solid white;
+    text-align: start;
+    margin-bottom: 3rem;
+}
+
+.admin a{
+    text-decoration: none;
+    border: 0.2rem solid white;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 10px;
+}
+
+.item{
+    display: flex;
+    font-size: 2rem;
+    border-bottom: 0.2rem solid white;
+}
+
+.item div{
+    margin-right: 2rem;
+    align-self: center;
+    width: 100%;
+}
+
+.editar {
+    display: grid;
+}
+
+.editar button{
+    height: 3rem;
+    width: 10rem;
+    background-color: black;
+    border: 0.1rem solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+.editar button:first-child{
+    margin-bottom: 1rem;
+}

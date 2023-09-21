@@ -1,0 +1,22 @@
+.historico h2{
+    font-size: 4rem;
+    border-bottom: 0.2rem solid white;
+    text-align: start;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pedido{
+    display: flex;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 2rem;
+    border-bottom: 0.2rem solid white;
+}
+
+.pedido div{
+    margin-right: 2rem;
+    
+    width: 100%;
+}
