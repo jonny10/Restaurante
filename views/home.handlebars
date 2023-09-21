@@ -11,28 +11,59 @@
     <div class="row">
         <!--Organizando em uma divisão o grupo de itens-->
         <div class="pratos">
+            <!--um each que traz as variaveis do back-end em loop-->
+            {{#each almoco as | almoco |}}
             <!--Uma formatação geral de como ficará os itens trazidos do banco de dados-->
             <div class="item">
+                <!--Entrando dentro do objeto infos do almoco e nomeando de inf-->
+                {{#each almoco.infos as | inf |}}
                 <!--Uma imagem do item-->
                 <div class="imagem">
-                    <img src="/img/prato1.jfif" alt="logomarca">
+                    <img src={{inf.imagem_do_item}} alt="logomarca">
                 </div>
                 <!--Um titulo para o item-->
                 <div class="titulo">
-                    <p>Prato</p>
+                    <p>{{inf.titulo}}</p>
                 </div>
-                <!--A descrição do item-->
-                <div class="descricao">
-                    <p>descrição</p>
+                <!--Entrnado dentro do objeto infosTamanhos do almoco e nomeando de tamanhos, que trará as informações dos 3 tamanhos-->
+                {{#each almoco.infosTamanhos as | tamanhos |}}
+                <!--Criando uma classe para que eu consiga no javascript esconder e mostrar somente as classes com input selecionado-->
+                <div class="desc tamanho{{tamanhos.tamanho.tamanho}} infos{{tamanhos.titulo}}_{{tamanhos.tamanho.tamanho}}">
+                    <!--A descrição do item-->
+                    <div class="descricao">
+                        <p>{{tamanhos.descricao}}</p>
+                    </div>
+                    <!--O valor do item-->
+                    <div class="valor">
+                        <p>R$ {{tamanhos.valor}}</p>
+                    </div>
                 </div>
-                <!--O valor do item-->
-                <div class="valor">
-                    <p>R$ 0,00</p>
+                <!--Fechando o InfosTamanho-->
+                {{/each}}
+                <!--Em breve-->
+                <form action="/" method="get">
+                <!--Criando inputs com o bootstrap para aparecer as classes de acordo com o tamanho selecionado-->
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <!--Input que recebe o name com o titulo do Item e com a função Onclick onde puxa uma função no javascript-->
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio1" value="infos{{titulo}}_1" onclick="mostrarClasse('infos{{inf.titulo}}_P')" autocomplete="off" checked>
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio1">P</label>
+
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio2" value="infos{{titulo}}_2" onclick="mostrarClasse('infos{{inf.titulo}}_M')" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio2">M</label>
+
+                    <input type="radio" class="btn-check" name="btnradio{{inf.titulo}}" id="btnradio3" value="infos{{titulo}}_3" onclick="mostrarClasse('infos{{inf.titulo}}_G')" autocomplete="off">
+                    <label class="btn btn-outline-light mb-3 alterar" for="btnradio3">G</label>
                 </div>
+                </form>
+                <!--Em breve-->
                 <div class="adicionar">
                     <button>Adicionar na sacola</button>
                 </div>
+                <!--Fechando o infos-->
+                {{/each}}
             </div>
+            <!--Fechando o almoco-->
+            {{/each}}
         </div>
         <!--Separando os demais items do almoço pois teão uma formatação diferente de duas colunas-->
         <div class="items">
@@ -51,23 +82,25 @@
                             <h1>Doces<h1></h1>
                         </div>
                         <!--Usando novamente a formatação para apresentar o item do banco de dados-->
+                        {{#each doces}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
                 <!--Utilizando a outra metade da coluna para colocar outro tipo de itens-->
@@ -79,23 +112,25 @@
                             <h1>Salgados</h1>
                         </div>
                         <!--Usando novamente a formatação para apresentar o item do banco de dados-->
+                        {{#each salgados}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar" id="lanches">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -110,23 +145,25 @@
                         <div class="titulo_prato" >
                             <h1>Lanches</h1>
                         </div>
+                        {{#each lanches}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
                 <div class="col-6">
@@ -134,23 +171,25 @@
                         <div class="titulo_prato" >
                             <h1>Porções<h1></h1>
                         </div>
+                        {{#each porcoes}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar" id="bebidas">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -159,51 +198,55 @@
                     <h1>Bebidas</h1>
                 </div>
                 <div class="col-6">
-                    <div class="lanches">
+                    <div class="refrigerantes">
                         <div class="titulo_prato" >
                             <h1>Refrigerante/Suco</h1>
                         </div>
+                        {{#each refrigerantes}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="porcoes">
+                    <div class="cervejas">
                         <div class="titulo_prato" >
                             <h1>Cervejas<h1></h1>
                         </div>
+                        {{#each cervejas}}
                         <div class="item">
                             <div class="imagem">
-                                <img src="/img/prato1.jfif" alt="logomarca">
+                                <img src={{imagem_do_item}} alt="logomarca">
                             </div>
                             <div class="titulo">
-                                <p>Prato</p>
+                                <p>{{titulo}}</p>
                             </div>
                             <div class="descricao">
-                                <p>descrição</p>
+                                <p>{{descricao}}</p>
                             </div>
                             <div class="valor">
-                                <p>R$ 0,00</p>
+                                <p>R$ {{valor}}</p>
                             </div>
                             <div class="adicionar">
                                 <button>Adicionar na sacola</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>

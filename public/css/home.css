@@ -147,3 +147,15 @@ com o tamanho da fonte em 30px e sem borda*/
     color: #000000;
 }
 
+.alterar{
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.desc {
+    display: none;
+}
+.ativo {
+    display: block;
+}
