@@ -1,0 +1,57 @@
+.admin{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.admin h2{
+    font-size: 4rem;
+    border-bottom: 0.2rem solid white;
+    text-align: start;
+    margin-bottom: 3rem;
+}
+
+.admin a{
+    text-decoration: none;
+    border: 0.2rem solid white;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 10px;
+}
+
+.admin a:hover{
+    background-color: white;
+    color: black;
+}
+
+.mostrar_item{
+    display: flex;
+    font-size: 2rem;
+    border-bottom: 0.2rem solid white;
+    margin-bottom: 2rem;
+}
+
+.mostrar_item div{
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.editar {
+    display: grid;
+    justify-content: center;
+}
+
+.editar button{
+    height: 3rem;
+    width: 10rem;
+    background-color: black;
+    border: 0.1rem solid white;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.editar button:hover{
+    background-color: white;
+    color: black;
+}

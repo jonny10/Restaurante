@@ -104,6 +104,11 @@ definindo as cores como branco*/
     border-style: solid;
 }
 
+.buttons button:hover{
+    background-color: white;
+    color: black;
+}
+
 /*Definindo as propriedadaes da guia*/
 .guia{
     background-color: #000000;
@@ -152,4 +157,15 @@ que seu tamanho é 100% e que seu texto ficará no centro*/
 /*Colocando que o bootstrap não passe do tamanho máximo*/
 .row{
     width: 100%;
+}
+
+.suspenso{
+    font-size: 1.5rem;
+    background-color: #000000;
+    border: 0.1rem solid white;
+    margin: 3rem
+}
+
+.suspenso a{
+    color: white;
 }

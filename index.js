@@ -4,7 +4,6 @@
     const { engine } = require('express-handlebars')
     const admin = require("./routes/admin")
     const path = require('path')
-    const bodyparser = require('body-parser')
 // Configurações
     // Handlebars
         app.engine('handlebars', engine({
@@ -18,8 +17,8 @@
     // Public
         app.use(express.static(path.join(__dirname, "public")))
     // Body-Parser
-        app.use(bodyparser.urlencoded({extended: false}))
-        app.use(bodyparser.json())
+        app.use(express.urlencoded({extended: false}))
+        app.use(express.json())
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
@@ -107,6 +106,13 @@ app.get("/contratamos", function(req, res){
     res.render("contratamos")
 })
 
+app.get("/perfil",(req, res) => {
+    res.render('perfil')
+})
+
+app.get("/pedidos",(req, res) => {
+    res.render('pedidos')
+})
 
 // Outros
 port = 8800
