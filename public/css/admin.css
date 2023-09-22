@@ -18,20 +18,27 @@
     border-radius: 10px;
 }
 
-.item{
+.admin a:hover{
+    background-color: white;
+    color: black;
+}
+
+.mostrar_item{
     display: flex;
     font-size: 2rem;
     border-bottom: 0.2rem solid white;
+    margin-bottom: 2rem;
 }
 
-.item div{
-    margin-right: 2rem;
-    align-self: center;
+.mostrar_item div{
+    text-align: center;
+    margin: auto;
     width: 100%;
 }
 
 .editar {
     display: grid;
+    justify-content: center;
 }
 
 .editar button{
@@ -41,8 +48,10 @@
     border: 0.1rem solid white;
     color: white;
     border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
-.editar button:first-child{
-    margin-bottom: 1rem;
+.editar button:hover{
+    background-color: white;
+    color: black;
 }

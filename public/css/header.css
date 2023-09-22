@@ -104,6 +104,11 @@ definindo as cores como branco*/
     border-style: solid;
 }
 
+.buttons button:hover{
+    background-color: white;
+    color: black;
+}
+
 /*Definindo as propriedadaes da guia*/
 .guia{
     background-color: #000000;
