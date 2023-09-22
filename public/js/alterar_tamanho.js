@@ -1,5 +1,5 @@
-function mostrarClasse(classe) {
-    const classes = document.querySelectorAll('.desc');
+function mostrarClasse(classe, infosItem) {
+    const classes = document.querySelectorAll('.' + infosItem);
     classes.forEach(element => {
         element.classList.remove('ativo');
     });

@@ -79,7 +79,7 @@ app.get("/", async (req, res) => {
         salgados: salgados,
         lanches: lanches,
         porcoes: porcoes,
-        refri: refri,
+        refrigerantes: refri,
         cervejas: cervejas
     })
 })

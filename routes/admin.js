@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const Item = require("../models/Item")
+const fs = require('fs');
+const { type } = require('os');
 
 
 router.get('/', (req, res) => {
@@ -17,17 +20,21 @@ router.post('/form-item', (req, res) => {
     tamanho = req.body.tamanho
     valor = req.body.valor
     imagem = req.body.imagem
-    /*item = Item.create(
+    //multer
+    /*Item.create(
         {
             titulo: titulo, 
             descricao: descricao, 
-            tamanho_id: tipo, 
-            tipo_id: tamanho, 
-            imagem_do_item: imagem, 
+            tamanho_id: tamanho, 
+            tipo_id: tipo, 
+            imagem_do_item: imageItem, 
             valor: valor
         }
-    )*/
-    res.render('home')
+    ).then(() => {
+        res.redirect('/')
+    }).catch((erro) => {
+        res.send('falho paizão' + erro)
+    })*/
 })
 
 module.exports = router
