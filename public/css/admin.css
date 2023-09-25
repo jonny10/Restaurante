@@ -16,6 +16,11 @@
     padding: 0.5rem;
     color: white;
     border-radius: 10px;
+    margin-right: 0.5rem;
+}
+
+.add{
+    margin-bottom: 2rem;
 }
 
 .admin a:hover{
@@ -36,6 +41,10 @@
     width: 100%;
 }
 
+.mostrar_item div img{
+    margin: 2rem;
+}
+
 .editar {
     display: grid;
     justify-content: center;
@@ -54,4 +63,18 @@
 .editar button:hover{
     background-color: white;
     color: black;
+}
+
+.formCronograma div{
+    margin-bottom: 1rem;
+}
+
+.formCronograma input{
+    background-color: transparent;
+    color: white;
+}
+
+.formCronograma span{
+    background-color: transparent;
+    color: white;
 }

@@ -16,28 +16,30 @@
             <!--Uma formatação geral de como ficará os itens trazidos do banco de dados-->
             <div class="item">
                 <!--Entrando dentro do objeto infos do almoco e nomeando de inf-->
-                {{#each almoco.infos as | inf |}}
+                {{#with almoco.infosTamanhos.[0] as | infos |}}
                 <!--Uma imagem do item-->
                 <div class="imagem">
-                    <img src={{inf.imagem_do_item}} alt="logomarca">
+                    <img src={{infos.imagem_do_item}} alt="logomarca">
                 </div>
                 <!--Um titulo para o item-->
                 <div class="titulo">
-                    <p>{{inf.titulo}}</p>
+                    <p>{{infos.titulo}}</p>
                 </div>
                 <!--Fechando o infos-->
-                {{/each}}
+                {{/with}}
                 <!--Entrnado dentro do objeto infosTamanhos do almoco e nomeando de tamanhos, que trará as informações dos 3 tamanhos-->
-                {{#each almoco.infosTamanhos as | tamanhos |}}
+                {{#each almoco.infosTamanhos as | infos |}}
+                {{#each almoco.infos as | titulo |}}
                 <!--Criando uma classe para que eu consiga no javascript esconder e mostrar somente as classes com input selecionado-->
-                <div class="desc  classe_infos_{{tamanhos.titulo}} tamanho{{tamanhos.tamanho.tamanho}} infos{{tamanhos.titulo}}_{{tamanhos.tamanho.tamanho}}">
+                <div class="desc  classe_infos_{{titulo.titulo}} tamanho{{infos.tamanho.tamanho}} infos{{titulo.titulo}}_{{infos.tamanho.tamanho}}">
+                {{/each}}
                     <!--A descrição do item-->
                     <div class="descricao">
-                        <p>{{tamanhos.descricao}}</p>
+                        <p>{{infos.descricao}}</p>
                     </div>
                     <!--O valor do item-->
                     <div class="valor">
-                        <p>R$ {{tamanhos.valor}}</p>
+                        <p>R$ {{infos.valor}}</p>
                     </div>
                 </div>
                 <!--Fechando o InfosTamanho-->

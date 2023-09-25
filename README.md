@@ -32,3 +32,5 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 -21/09/23: Bom dia, bom dia
 
 -22/09/2023: Bom dia, hoje vou implementar mais algumas coisinhas nas páginas de admin
+
+-23/09/23: Bom dia, hoje vou instalar o multer para puxar fotos do campo input do tipo file, para pegar a foto do produto, bom agora que consegui finalizar o formulario de adição de produto, vou fazer a página de edição do produtos já existentes

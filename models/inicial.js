@@ -46,4 +46,3 @@ var imageChocolate = fs.readFileSync('./oxbvvg698zads1msu5k5.png');
         valor: 4.00
     }
 )*/
-
