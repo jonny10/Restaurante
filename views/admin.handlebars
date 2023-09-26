@@ -1,10 +1,17 @@
+<!--Definindo uma divisão geral-->
 <div class="admin">
+    <!--Definindo o titulo para a sessão de edição dos Itens do restaurante-->
     <h2>Items</h2>
+    <!--Definindo uma divisão para inserir os links de adição e alteração de sessão-->
     <div class="add">
+        <!--Link para a página de incersão de item-->
         <a href="/admin/adicionar-item">Adicionar Item</a>
+        <!--link para a sessão de cronograma-->
         <a href="#cronograma">Alterar cronograma</a>
     </div>
+    <!--Divisão para inserir os itens já cadastrados no banco de dados-->
     <div class="mostrar_item">
+        <!--A primeira linha será um guia para os demais-->
         <div>
             <p>ID</p>
         </div>
@@ -26,10 +33,13 @@
         <div>
             <p>Valor</p>
         </div>
+        <!--Divisão para colocar os botões para editar o iten-->
         <div class="editar">
+            <!--os botões serão para apagar ou editar o item-->
             <p>Editar</p>
         </div>
     </div>
+    <!--Aqui será inserido uma linha para cada iten do banco, contendo id, nome, descrição, imagem, tipo, tamanho e valor-->
     {{#each produtos}}
     <div class="mostrar_item">
         <div>
@@ -63,39 +73,45 @@
         </div>
     </div>
     {{/each}}
+    <!--Divisão para sessão de cronograma-->
     <div id="cronograma">
+        <!--Definindo o titulo para a sessão de edição do cronograma-->
         <h2>Cronograma</h2>
+        <!--link para a voltar ao incio da página-->
         <a href="#">Voltar ao inicio</a>
+        <!--Sequencia de divs para o bootstrap-->
         <div class="container text-start">
+            <!--Titulo do card-->
             <h1 class="display-1 text-center mb-5">Alterar cronograma</h1>
             <div class="row justify-content-md-center">
                 <div class="card text-bg-dark" style="width: 50%; padding: 1.5rem; border: 0.2rem solid white; border-radius: 2rem; ">
-                    <form action="/admin/form-item" enctype="multipart/form-data" method="post">
+                    <form action="/admin/alterar-cronograma" method="post">
+                        <!--Formulário para alterar o cronograma do restaurante-->
                         <div class="formCronograma">
                             {{#each cronograma}}
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Segunda-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{segunda}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{segunda}}" name="segunda" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Terça-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{terca}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{terca}}" name="terca" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Quarta-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{quarta}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{quarta}}" name="quarta" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Quinta-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{quinta}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{quinta}}" name="quinta" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Sexta-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sexta}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sexta}}" name="sexta" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Sábado-feira</span>
-                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sabado}}" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sabado}}" name="sabado" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div style="width: 100%; height: 5rem; " class="btn-group" role="group" aria-label="Basic outlined example">
                                 <button type="submit" class="btn btn-outline-light" style="font-size: 2rem;">Alterar</button>

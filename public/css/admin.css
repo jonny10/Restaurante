@@ -1,8 +1,11 @@
+/*Definindo que a página de admin no geral terá uma margem aos lados de 2rem*/
 .admin{
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: auto 2rem;
 }
 
+/*Definindo que os titulos h2 dessa página tenham 4rem de tamanho da fonte,
+que tenha uma borda em baixo de 0.2px solido e branco, que o texto seja alinhado no centro
+e que tenha uma margem em baixo de 3rem*/
 .admin h2{
     font-size: 4rem;
     border-bottom: 0.2rem solid white;
@@ -10,6 +13,9 @@
     margin-bottom: 3rem;
 }
 
+/*Definindo que os links dessa página não tenham uma linha em baixo, tenham uma borda
+de 2px solido e branco arredondado em 10px com o espaçamento de 5px e que
+ a letra tenha cor branca com umar margem a direita de 5px*/
 .admin a{
     text-decoration: none;
     border: 0.2rem solid white;
@@ -19,15 +25,20 @@
     margin-right: 0.5rem;
 }
 
+/*Definindo que os links de edições tenham uma margem em baixo de 2rem*/
 .add{
     margin-bottom: 2rem;
 }
 
+/*Definindo que os link quando o mouse está em cima mudem o fundo para branco
+e a letra para a cor preta*/
 .admin a:hover{
     background-color: white;
     color: black;
 }
 
+/*Definindo que a linha onde fica as informações do iten terá um display flexivel, com o
+tamanho da fonte em 2rem com uma borda em baixo de 2px solido e branco, e uma margem em baixo de 2rem*/
 .mostrar_item{
     display: flex;
     font-size: 2rem;
@@ -35,21 +46,29 @@
     margin-bottom: 2rem;
 }
 
+/*Definindo que as divs dentro da linha do itens, onde ficará cada informações do iten ficará
+com o texto no centro, uma margem automatica com o tamanho de 100% do que puder*/
 .mostrar_item div{
     text-align: center;
     margin: auto;
     width: 100%;
 }
 
+/*Definindo que div que contém a imagem do item tenha um espaçamento de 2rem*/
 .mostrar_item div img{
     margin: 2rem;
 }
 
+/*Definindo que a divisão dos botoões de edição do item tenham um display de grid
+e que fique no meio*/
 .editar {
     display: grid;
     justify-content: center;
 }
 
+/*Definindo que os botões de editar o item tenham uma altura de 3 rem e largura de 10rem
+o fundo do botão preto a borda 1px solida e branca arredondada em 5px com a letra branca
+e uma margem em baixo de 1rem */
 .editar button{
     height: 3rem;
     width: 10rem;
@@ -60,20 +79,26 @@
     margin-bottom: 1rem;
 }
 
+/*Definindo que quando o mouse estiver em cima dos botões dos itens, ele alterem o fundo
+para branco e a letra para preta*/
 .editar button:hover{
     background-color: white;
     color: black;
 }
 
+/*Definindo que a divisão do formulario tenha uma margem em baixo de 1rem*/
 .formCronograma div{
     margin-bottom: 1rem;
 }
 
+/*Definindo que o input do formulario tenha um fundo transparent e letra branca*/
 .formCronograma input{
     background-color: transparent;
     color: white;
 }
 
+/*Definindo que o span/label dos input criado pelo bootstrap tenham um fundo transparente
+e letra branca*/
 .formCronograma span{
     background-color: transparent;
     color: white;

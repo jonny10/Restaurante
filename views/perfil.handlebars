@@ -1,11 +1,19 @@
+<!--Criando uma divisão geral para o perfil-->
 <div class="center">
+    <!--Criando uma divisão para ser uma caixa e centraliza-lá na tela-->
     <div class="box">
+        <!--Divisão para colocar o titulo na caixa-->
         <div class="perfil">
             <h2>Perfil</h2>
         </div>
+        <!--Criando um divisão para as informações do perfil-->
         <div class="perfil_infos">
+            <!--Criando agora uma sequencia de inputs e label para servir de visualização das informações do perfil
+            e também de formulário para que você possa alterar as inforamações se quiser-->
             <form>
+                <!--Criando uma linha para separar a visualizaçaõ das informações em duas colunas-->
                 <div class="row">
+                    <!--Na primeira coluna o login, o nome e o telefone do usuario-->
                     <div class="col-6">
                         <label for="exampleInputEmail1" class="form-label">Login</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -14,8 +22,8 @@
                         <label for="telefone" class="form-label">Telefone</label>
                         <input type="tel" class="form-control" id="telefone">
                     </div>
+                    <!--Na segunda coluna um botão para alterar a senha, o CEP e o complemento do usuario-->
                     <div class="col-6">
-                        
                         <label for="cep" class="form-label">Senha</label>
                         <input type="text" class="form-control" id="cep" required maxlength="9" value="Alterar senha">
                         <label for="cep" class="form-label">CEP</label>
@@ -24,6 +32,7 @@
                         <input type="text" class="form-control" id="complemento">
                     </div>
                 </div>
+                <!--Botão para salvar as alterações realizadas nas informações do perfil-->
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button type="submit" class="btn btn-outline-light">Salvar</button>
                 </div>

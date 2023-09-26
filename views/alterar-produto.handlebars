@@ -1,18 +1,26 @@
+<!--Página para alterar os items do restaurante-->
+<!--Divs do bootstrap para criar um card-->
 <div class="container text-start">
+    <!--Titulo do card-->
     <h1 class="display-1 text-center mb-5">Editar Item</h1>
     <div class="row justify-content-md-center">
         <div class="card text-bg-dark" style="width: 50%; padding: 1.5rem; border: 0.2rem solid white; border-radius: 2rem; ">
+            <!--Formulário com as informações do item para alterar-->
             <form action="/admin/alterar-item" enctype="multipart/form-data" method="post">
+                <!--Divs para separar os inputs e labels de cada informação do item-->
+                <!--Titulo do item, utilizando o boostrap para personalizar-->
                 {{#each item}}
                 <input style="display: none;" type="text" name="item" value="{{id}}">
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;" for="nome" class="form-label">Titulo</label>
                     <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="nome" value="{{titulo}}" id="nome">
                 </div>
+                <!--Descrição do item-->
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;" for="descricao" class="form-label">Descrição</label>
                     <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="descricao" value="{{descricao}}" id="descricao">
                 </div>
+                <!--Tipo do item-->
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;"  class="form-label">Tipo</label>
                     <select style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" name="tipo" class="form-select" aria-label="Default select example">
@@ -26,6 +34,7 @@
                         <option value="7">Cerveja</option>
                     </select>
                 </div>
+                <!--Tamanho do item-->
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;" class="form-label">Tamanho</label>
                     <select style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" name="tamanho" class="form-select" aria-label="Default select example">
@@ -35,15 +44,18 @@
                         <option value="3">G</option>
                     </select>
                 </div>
+                <!--Valor do Item-->
                 <div class="mb-2">
                     <label  style="font-size: 2rem; margin-bottom: 0; " for="valor" class="form-label">Valor</label>
                     <input style="font-size: 2rem ; font-family: Arial, Helvetica, sans-serif;" type="number" min="0.01" step="0.01" class="form-control" name="valor" value="{{valor}}" id="valor">
                 </div>
+                <!--Imagem do item-->
                 <div class="mb-2">
                     <label  style="font-size: 2rem; margin-bottom: 0;" for="imagem" class="form-label ">Imagem</label>
                     <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="file" accept="image/*" class="form-control" name="imagem" id="imagemUpdate">
                     <img style="margin-bottom: 1rem;" width="100%" id="mudarImagem" src="#" alt="Imagem do item inserido pelo input" />
                 </div>
+                <!--Botões para enviar o formulário de alteração ou limpar todos os campos-->
                 <div style="width: 100%; height: 5rem; " class="btn-group" role="group" aria-label="Basic outlined example">
                     <button type="submit" class="btn btn-outline-light" style="font-size: 2rem;">Salvar alterações</button>
                     <button type="reset" class="btn btn-outline-light" style="font-size: 2rem;">Limpar</button>

@@ -92,4 +92,26 @@ router.post('/form-item', upload.single('imagem'), (req, res) => {
     })
 })
 
+router.post('/alterar-cronograma', (req, res) => {
+    Cronograma.update(
+        {
+            segunda: req.body.segunda,
+            terca: req.body.terca,
+            quarta: req.body.quarta,
+            quinta: req.body.quinta,
+            sexta: req.body.sexta,
+            sabado: req.body.sabado,
+        },
+        {
+            where: {
+                id: 1
+            }
+        }
+    ).then(() => {
+        res.redirect('/admin')
+    }).catch((err) => {
+        res.send('falho cria, pq ' + err)
+    })
+})
+
 module.exports = router

@@ -159,6 +159,8 @@ que seu tamanho é 100% e que seu texto ficará no centro*/
     width: 100%;
 }
 
+/*Definindo que o dropdown do bootstrap tenha um fonte de 1.5rem,
+com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
 .suspenso{
     font-size: 1.5rem;
     background-color: #000000;
@@ -166,6 +168,7 @@ que seu tamanho é 100% e que seu texto ficará no centro*/
     margin: 3rem
 }
 
+/*Definindo que os links dentro do dropdown tenham a letra branca*/
 .suspenso a{
     color: white;
 }

@@ -10,7 +10,7 @@ const Tipo = banco.define('tipo', {
     tipo: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
     }
 })
 
