@@ -36,3 +36,5 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 -23/09/23: Bom dia, hoje vou instalar o multer para puxar fotos do campo input do tipo file, para pegar a foto do produto, bom agora que consegui finalizar o formulario de adição de produto, vou fazer a página de edição do produtos já existentes
 
 24/09/23: Hoje vou configurar o update do cronograma da parte de admin e documentar tudo, vou revisar e mudar algumas coisinhas
+
+25/09/23: hoje vou terminar de documentar e estudar como realizar a estrutura de cadastro e login, aproveitei e também organizei as rotas e viwes

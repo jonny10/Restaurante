@@ -3,6 +3,7 @@
     const app = express()
     const { engine } = require('express-handlebars')
     const admin = require("./routes/admin")
+    const usuario = require("./routes/usuario")
     const path = require('path')
 // Configurações
     // Handlebars
@@ -22,94 +23,93 @@
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
-    const { and } = require("sequelize")
 // Rotas
-app.get("/", async (req, res) => {
-    pratos = {}
-    doces = []
-    salgados = []
-    lanches = []
-    porcoes = []
-    refri = []
-    cervejas = []
-    
-    const itens = await Item.findAll({include: Tamanho})
-    for (var i = 0; i < itens.length; i++) {
-        imagem = itens[i]['dataValues']['imagem_do_item']
-        itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(imagem, 'binary').toString('base64')
-        tipo = itens[i]['dataValues']['tipo_id']
-        nome = itens[i]['dataValues']['titulo']
-        if (tipo == 1){
-            infos = {
-                titulo: nome.replace(/ /g, "-"),
+    //Home
+    /*Uma rota inicial que busca no banco de dados todos os itens e verififica o tipo de cada item
+    e organiza o tipo do item em uma array para que no html cada tipo de item fique em um determinado lugar
+    e se o item for do tipo almoço ele é criada um objeto com o nome no primeiro array e as 3 informações
+    de cada tamanho daquele mesmo na segunda array, para que no html seja possivel alterar somente o tamanho
+    para visualizar as demais informações do mesmo item*/
+        app.get("/", async (req, res) => {
+            pratos = {}
+            doces = []
+            salgados = []
+            lanches = []
+            porcoes = []
+            refri = []
+            cervejas = []
+            
+            const itens = await Item.findAll({include: Tamanho})
+            for (var i = 0; i < itens.length; i++) {
+                imagem = itens[i]['dataValues']['imagem_do_item']
+                itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(imagem, 'binary').toString('base64')
+                tipo = itens[i]['dataValues']['tipo_id']
+                nome = itens[i]['dataValues']['titulo']
+                if (tipo == 1){
+                    infos = {
+                        titulo: nome.replace(/ /g, "-"),
+                    }
+                    if (!pratos[nome]) {
+                        pratos[nome] = {}
+                        pratos[nome]['infos'] = []
+                        pratos[nome]['infosTamanhos'] = []
+                        pratos[nome]['infos'].push(infos)
+                    }
+                    pratos[nome]['infosTamanhos'].push(itens[i])
+                }
+                if (tipo == 2){
+                    doces.push(itens[i])
+                }
+                if (tipo == 3){
+                    salgados.push(itens[i])
+                }
+                if (tipo == 4){
+                    lanches.push(itens[i])
+                }
+                if (tipo == 5){
+                    porcoes.push(itens[i])
+                }
+                if (tipo == 6){
+                    refri.push(itens[i])
+                }
+                if (tipo == 7){
+                    cervejas.push(itens[i])
+                }
             }
-            if (!pratos[nome]) {
-                pratos[nome] = {}
-                pratos[nome]['infos'] = []
-                pratos[nome]['infosTamanhos'] = []
-                pratos[nome]['infos'].push(infos)
-            }
-            pratos[nome]['infosTamanhos'].push(itens[i])
-        }
-        if (tipo == 2){
-            doces.push(itens[i])
-        }
-        if (tipo == 3){
-            salgados.push(itens[i])
-        }
-        if (tipo == 4){
-            lanches.push(itens[i])
-        }
-        if (tipo == 5){
-            porcoes.push(itens[i])
-        }
-        if (tipo == 6){
-            refri.push(itens[i])
-        }
-        if (tipo == 7){
-            cervejas.push(itens[i])
-        }
-    }
-    res.render('home', {
-        almoco: pratos, 
-        doces: doces,
-        salgados: salgados,
-        lanches: lanches,
-        porcoes: porcoes,
-        refrigerantes: refri,
-        cervejas: cervejas
-    })
-})
+            res.render('home', {
+                almoco: pratos, 
+                doces: doces,
+                salgados: salgados,
+                lanches: lanches,
+                porcoes: porcoes,
+                refrigerantes: refri,
+                cervejas: cervejas
+            })
+        })
 
-app.use ("/admin", admin)
+    //Sacola
+    /*Rota para savola */
+        app.get("/sacola", function(req, res){
+            res.sendfile()
+        })
 
-app.get("/login", function(req, res){
-    res.render('login')
-})
+    //Informações
+    /*Rota para visualizar as informações do restaurante */
+        app.get("/informacoes", function(req, res){
+            res.render("informacoes")
+        })
 
-app.get("/cadastro", function(req, res){
-    res.render('cadastro')
-})
+   //Contratamos 
+   /*Em breve */
+        app.get("/contratamos", function(req, res){
+            res.render("contratamos")
+        })
 
-app.get("/sacola", function(req, res){
-    res.sendfile()
-})
-
-app.get("/informacoes", function(req, res){
-    res.render("informacoes")
-})
-
-app.get("/contratamos", function(req, res){
-    res.render("contratamos")
-})
-
-app.get("/perfil",(req, res) => {
-    res.render('perfil')
-})
-
-app.get("/pedidos",(req, res) => {
-    res.render('pedidos')
-})
+//importando rotas
+    //admin
+        app.use ("/admin", admin)
+    //usuario
+        app.use ("/", usuario)
 
 // Outros
 port = 8800
