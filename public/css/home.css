@@ -147,12 +147,16 @@ com o tamanho da fonte em 30px e sem borda*/
     color: #000000;
 }
 
+/*Definindo que a label dos input de alteração de temanho tenham largura e altura automatica
+e a fonte de tamanho 1.5rem*/
 .alterar{
     width: auto;
     height: auto;
     font-size: 1.5rem;
 }
 
+/*Definindo que as classes com as informações dos tamanhos diferentes tenha ou o display none ou o display block
+dependendo do javascript*/
 .desc {
     display: none;
 }

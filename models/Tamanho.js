@@ -10,7 +10,7 @@ const Tamanho = banco.define('tamanho', {
     tamanho: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
     }
 })
 

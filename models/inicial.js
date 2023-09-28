@@ -3,7 +3,7 @@ const Tipo = require("./Tipo")
 const Tamanho = require("./Tamanho")
 const Item = require("./Item")
 
-var imageFeijoada = fs.readFileSync('./transferir.jfif');
+var imageBife = fs.readFileSync('./transferir.jfif');
 var imageChocolate = fs.readFileSync('./oxbvvg698zads1msu5k5.png');
 
 //const pratos = Tipo.create({tipo: "Almoço"})
@@ -18,22 +18,23 @@ var imageChocolate = fs.readFileSync('./oxbvvg698zads1msu5k5.png');
 //const tamanh1 = Tamanho.create({id: 1, tamanho: "P"})
 //const tamanho2 = Tamanho.create({id: 2, tamanho: "M"})
 //const tamanho3 = Tamanho.create({id: 3, tamanho: "G"})
+//const padrao = Tamanho.create({id: 4, tamanho: "Padrão"})
 
-Item.update(
+/*Item.update(
     {
-        titulo: "Feijoada", 
-        descricao: "Arroz e feijao preto 300g", 
+        titulo: "Bife", 
+        descricao: "Arroz, feijão, farofa, batata e bife acebolado", 
         tamanho_id: 1, 
         tipo_id: 1, 
-        imagem_do_item: imageFeijoada, 
-        valor: 12.00
+        imagem_do_item: imageBife, 
+        valor: 16.90
     },
     {
             where: {
-            id: 1
+            id: 8
         }
     }
-)
+)*/
 /*doce = Item.create(
     {
         id: 2,
@@ -45,4 +46,3 @@ Item.update(
         valor: 4.00
     }
 )*/
-

@@ -29,5 +29,11 @@ const Pedido = banco.define('pedidos', {
         type: DataTypes.TIME  
     }
 })
+Usuario.hasMany(Pedido, {
+    foreignKey: 'usuario_id'
+})
+Pedido.belongsTo(Status_do_pedido, {
+    foreignKey: 'status_id'
+})
 
 module.exports = Pedido

@@ -9,25 +9,28 @@ const Usuario = banco.define('usuario', {
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
     },
     cep: {
-        type: DataTypes.INTEGER(8)
+        type: DataTypes.INTEGER(8),
+        allowNull: false
     },
     complemento: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
     },
     telefone: {
-        type: DataTypes.STRING(11)
+        type: DataTypes.STRING(11),
+        allowNull: false
     },
     senha: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 })
 
