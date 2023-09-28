@@ -2,9 +2,7 @@ const fs = require('fs');
 const Tipo = require("./Tipo")
 const Tamanho = require("./Tamanho")
 const Item = require("./Item")
-
-var imageBife = fs.readFileSync('./transferir.jfif');
-var imageChocolate = fs.readFileSync('./oxbvvg698zads1msu5k5.png');
+const Perfil = require("./Perfil")
 
 //const pratos = Tipo.create({tipo: "Almoço"})
 //const doces = Tipo.create({tipo: "Doces"})
@@ -46,3 +44,14 @@ var imageChocolate = fs.readFileSync('./oxbvvg698zads1msu5k5.png');
         valor: 4.00
     }
 )*/
+/*perfil = Perfil.create(
+    {
+        perfil: "Cliente"
+    }
+)*/
+/*perfil = Perfil.create(
+    {
+        perfil: "Admin"
+    }
+)*/
+

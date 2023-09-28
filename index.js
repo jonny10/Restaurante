@@ -3,9 +3,27 @@
     const app = express()
     const { engine } = require('express-handlebars')
     const admin = require("./routes/admin")
-    const usuario = require("./routes/usuario")
+    const usuario = require("./routes/usuario_route")
     const path = require('path')
+    const session = require('express-session')
+    const flash = require('connect-flash')
+    const passport = require("passport")
+    require("./config/auth")(passport)
 // Configurações
+    // Sessão
+        app.use(session({
+            secret: "pRN?I7%1~0'_",
+            resave: true,
+            saveUninitialized: true
+        }))
+        app.use(passport.initialize())
+        app.use(passport.session())
+        app.use(flash())
+    // Middleware
+        app.use((req, res, next) => {
+            res.locals.error = req.flash("error")
+            next()
+        })
     // Handlebars
         app.engine('handlebars', engine({
             defaultLayout: 'main',
