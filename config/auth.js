@@ -19,6 +19,8 @@ module.exports = (passport) => {
                     return done(null, false, {message: "Senha incorreta"})
                 }
             })
+        }).catch((err) => {
+            console.log("Falho a busca no bd" + err)
         })
     }))
 
@@ -27,9 +29,14 @@ module.exports = (passport) => {
     })
 
     passport.deserializeUser((id, done) => {
-        Usuario.findByPk(id, (err, usuario) => {
-            done(err, usuario)
-            console.log("foi?")
+        Usuario.findOne({
+            where: {
+                id: id
+            }
+        }).then((usuario) => {
+            done(null, usuario)
+        }).catch((err) => {
+            return done(err, null)
         })
     })
 }
