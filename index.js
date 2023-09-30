@@ -19,11 +19,6 @@
         app.use(passport.initialize())
         app.use(passport.session())
         app.use(flash())
-    // Middleware
-        app.use((req, res, next) => {
-            res.locals.error = req.flash("error")
-            next()
-        })
     // Handlebars
         app.engine('handlebars', engine({
             defaultLayout: 'main',
@@ -38,9 +33,24 @@
     // Body-Parser
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
+    // Middleware
+        app.use((req, res, next) => {
+            res.locals.success_msg = req.flash("success_msg")
+            res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
+            res.locals.user = req.user || null
+            let eAdminLocal = null
+            if(req.user)
+                if(req.user.dataValues.perfil_id == 2){
+                    eAdminLocal = req.user
+                }
+            res.locals.eAdminLocal = eAdminLocal || null
+            next()
+        })
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
+    const Cronograma = require("./models/Cronograma")
 // Rotas
     //Home
     /*Uma rota inicial que busca no banco de dados todos os itens e verififica o tipo de cada item
@@ -114,7 +124,13 @@
     //Informações
     /*Rota para visualizar as informações do restaurante */
         app.get("/informacoes", function(req, res){
-            res.render("informacoes")
+            Cronograma.findAll().then((cronograma) => {
+                res.render("informacoes", {cronograma: cronograma})
+            }).catch((err) => {
+                let erro = "não foi possivel carregar o cronograma " + err
+                res.render("informacoes", {cronograma: erro})
+            })
+            
         })
 
    //Contratamos 

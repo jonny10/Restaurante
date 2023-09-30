@@ -4,6 +4,7 @@ const router = express.Router()
 const Usuario = require("../models/Usuario")
 const bcrypt  = require ('bcryptjs')
 const passport = require("passport")
+const {eUsuario} = require("../helpers/acesso")
 
 //Cadastro
 /*Rota para realizar o cadastro */
@@ -55,24 +56,38 @@ const passport = require("passport")
 
 //Logar
 /*Rota para logar o usuario no site*/
-router.post("/realizar-login", (req, res, next) =>  {
+router.post("/realizar-login", 
     passport.authenticate("local", {
-        successRedirect: "/",
         failureRedirect: "/login",
         failureFlash: true
-    })(req, res, next)
-})
+    }), (req, res) => {
+        req.flash('success_msg', "Logado com sucesso")
+        res.redirect('/')
+    }
+)
 
 //Perfil
 /*Rota para visualizar o perfil */
-    router.get("/perfil",(req, res) => {
+    router.get("/perfil", eUsuario, (req, res) => {
         res.render('usuario/perfil')
     })
 
 //Pedidos
 /*Rota para visualizar os pedidos */
-    router.get("/pedidos",(req, res) => {
+    router.get("/pedidos", eUsuario, (req, res) => {
         res.render('usuario/pedidos')
+    })
+
+//LogOut
+/*rota para deslogar o usuario*/
+    router.get("/deslogar", (req, res, next) => {
+        req.logout((err) => {
+            if(err){
+                return next(err)
+            }
+            req.flash('success_msg', "Deslogado com sucesso")
+            res.redirect("/")
+        })
     })
 
 //exportando as rotas

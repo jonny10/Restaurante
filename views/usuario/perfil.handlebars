@@ -11,31 +11,36 @@
             <!--Criando agora uma sequencia de inputs e label para servir de visualização das informações do perfil
             e também de formulário para que você possa alterar as inforamações se quiser-->
             <form>
+                {{#if user}}
+                <!--em breve-->
                 <!--Criando uma linha para separar a visualizaçaõ das informações em duas colunas-->
                 <div class="row">
                     <!--Na primeira coluna o login, o nome e o telefone do usuario-->
                     <div class="col-6">
                         <label for="exampleInputEmail1" class="form-label">Login</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.dataValues.email}}">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" value="{{nome}}">
+                        <input type="text" class="form-control" name="nome" id="nome" value="{{user.dataValues.nome}}">
                         <label for="telefone" class="form-label">Telefone</label>
-                        <input type="tel" class="form-control" id="telefone">
+                        <input type="tel" class="form-control" name="telefone" id="telefone" value="{{user.dataValues.telefone}}">
                     </div>
                     <!--Na segunda coluna um botão para alterar a senha, o CEP e o complemento do usuario-->
                     <div class="col-6">
-                        <label for="cep" class="form-label">Senha</label>
-                        <input type="text" class="form-control" id="cep" required maxlength="9" value="Alterar senha">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="text" class="form-control" name="senha" id="senha" value="Alterar senha">
                         <label for="cep" class="form-label">CEP</label>
-                        <input type="text" class="form-control" id="cep" required maxlength="9">
+                        <input type="text" class="form-control" name="cep" id="cep" value="{{user.dataValues.cep}}" required maxlength="9">
                         <label for="complemento" class="form-label">Complemento</label>
-                        <input type="text" class="form-control" id="complemento">
+                        <input type="text" class="form-control" name="complemento" id="complemento" value="{{user.dataValues.complemento}}">
+                        <label for="email" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" name="endereco" id="endereco" value="{{user.dataValues.endereco}}">
                     </div>
                 </div>
                 <!--Botão para salvar as alterações realizadas nas informações do perfil-->
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button type="submit" class="btn btn-outline-light">Salvar</button>
                 </div>
+                {{/if}}
             </form>
         </div>
     </div>

@@ -11,11 +11,14 @@
         <div class="col-6 mb-5">
             <h2 class="display-3 mb-5 ">Cronograma</h2>
             <ul class="mb-5">
-                <li class="display-6 mb-4">Segunda: </li>
-                <li class="display-6 mb-4">terça: </li>
-                <li class="display-6 mb-4">Quarta: </li>
-                <li class="display-6 mb-4">Quinta: </li>
-                <li class="display-6 mb-4">Sexta: </li>
+                {{#each cronograma}}
+                <li class="display-6 mb-4">Segunda: {{segunda}}</li>
+                <li class="display-6 mb-4">Terça: {{terca}}</li>
+                <li class="display-6 mb-4">Quarta: {{quarta}}</li>
+                <li class="display-6 mb-4">Quinta: {{quinta}}</li>
+                <li class="display-6 mb-4">Sexta: {{sexta}}</li>
+                <li class="display-6 mb-4">Sábado: {{sabado}}</li>
+                {{/each}}
             </ul>
         </div>
 

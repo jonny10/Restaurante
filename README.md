@@ -40,3 +40,16 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 25/09/23: hoje vou terminar de documentar e estudar como realizar a estrutura de cadastro e login, aproveitei e também organizei as rotas e viwes
 
 28/09/23: Boa tarde, hoje iniciei as configurações das sessões para montar o sistema de login, atento, verificar o porque o midleware esta rodando 10 vezes
+
+29/09/23: Boa tarde, hoje vou montar o sistema de controlar acesso
+
+- fonte do ola "nome" / aumentar caixa de dropdown
+- css do flash
+- pagina do perfil / botao alterar senha / formulario de alterar usuario
+- carregando varios home se clicado varias vezes
+- link clicavel do menu
+- verificar titulo do header nao centralizado verticalmente
+
+após isso...
+
+Validar TUDO 

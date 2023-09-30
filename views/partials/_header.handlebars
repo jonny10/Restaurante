@@ -11,13 +11,14 @@
                 </div>
                 <!--Divisão para o nome do restaurate-->
                 <div class="title">
-                    <a style="text-decoration-line: none; color: white;" href="/"><h1>La playa<br>bar</h1></a>
+                    <a style="text-decoration-line: none; color: white;" red="/"><h1>La playa<br>bar</h1></a>
                 </div>
                 <!--Divisão para os botões-->
                 <div class="buttons d-flex">
+                    {{#if user}}
                     <!--defininindo um dropdown do bootstrap com o nome do usuario-->
                     <a class="nav-link dropdown-toggle me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.5rem;">
-                        Olá Jonathan
+                        Olá {{user.dataValues.nome}}
                     </a>
                     <!--Uma lista com os links para páginas do site do dropdown do bootstrap-->
                     <ul class="dropdown-menu dropdown-menu-dark suspenso">
@@ -25,13 +26,18 @@
                         <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
                         <!--Link para a página com os pedidos do usuario-->
                         <li><a class="dropdown-item" href="/pedidos">Pedidos</a></li>
+                        {{#if eAdminLocal}}
                         <!--Link para a página de admin-->
                         <li><a class="dropdown-item" href="/admin">administrar</a></li>
-                        <!--em breve, deslogar-->
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                        {{else}}
+                        {{/if}}
+                        <!--Link que desloga o usuario-->
+                        <li><a class="dropdown-item" href="/deslogar">Sair</a></li>
                     </ul>
+                    {{else}}
                     <!--Link para ir a página de login-->
                     <a href="/login"><button>Entrar</button></a>
+                    {{/if}}
                 </div>
             </div>
             <!--Uma divisão para que tenha um guia abaixo das informações iniciais, para links que leva a outros lugares-->
