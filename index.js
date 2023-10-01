@@ -89,10 +89,10 @@
                     doces.push(itens[i])
                 }
                 if (tipo == 3){
-                    salgados.push(itens[i])
+                    lanches.push(itens[i])
                 }
                 if (tipo == 4){
-                    lanches.push(itens[i])
+                    salgados.push(itens[i])
                 }
                 if (tipo == 5){
                     porcoes.push(itens[i])

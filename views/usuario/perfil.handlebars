@@ -10,7 +10,7 @@
         <div class="perfil_infos">
             <!--Criando agora uma sequencia de inputs e label para servir de visualização das informações do perfil
             e também de formulário para que você possa alterar as inforamações se quiser-->
-            <form>
+            <form method="post" action="/alterar-perfil">
                 {{#if user}}
                 <!--em breve-->
                 <!--Criando uma linha para separar a visualizaçaõ das informações em duas colunas-->
@@ -26,20 +26,17 @@
                     </div>
                     <!--Na segunda coluna um botão para alterar a senha, o CEP e o complemento do usuario-->
                     <div class="col-6">
-                        <label for="senha" class="form-label">Senha</label>
-                        <input type="text" class="form-control" name="senha" id="senha" value="Alterar senha">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" name="endereco" id="endereco" value="{{user.dataValues.endereco}}">
                         <label for="cep" class="form-label">CEP</label>
                         <input type="text" class="form-control" name="cep" id="cep" value="{{user.dataValues.cep}}" required maxlength="9">
                         <label for="complemento" class="form-label">Complemento</label>
                         <input type="text" class="form-control" name="complemento" id="complemento" value="{{user.dataValues.complemento}}">
-                        <label for="email" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" name="endereco" id="endereco" value="{{user.dataValues.endereco}}">
                     </div>
                 </div>
                 <!--Botão para salvar as alterações realizadas nas informações do perfil-->
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="submit" class="btn btn-outline-light">Salvar</button>
-                </div>
+                <button type="submit" class="btn btn-outline-light salvar" >Salvar</button>
+                <button  class="btn btn-outline-light passAlterar">Alterar senha</button>
                 {{/if}}
             </form>
         </div>

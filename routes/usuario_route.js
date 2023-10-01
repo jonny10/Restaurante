@@ -72,6 +72,30 @@ router.post("/realizar-login",
         res.render('usuario/perfil')
     })
 
+//Alterar perfil
+/*Rota para receber o formulário que altera as informações do usuario*/
+    router.post("/alterar-perfil", eUsuario, (req, res) => {
+        Usuario.update(
+            {
+                email: req.body.email,
+                nome: req.body.nome,
+                telefone: req.body.telefone,
+                endereco: req.body.endereco,
+                cep: req.body.cep,
+                complemento: req.body.complemento
+            },
+            {
+                where: {
+                    id: req.user.dataValues.perfil_id
+                }
+            }
+        ).then(() => {
+            res.redirect('/perfil')
+        }).catch((err) => {
+            res.send('falho cria, pq ' + err)
+        })
+    })
+
 //Pedidos
 /*Rota para visualizar os pedidos */
     router.get("/pedidos", eUsuario, (req, res) => {

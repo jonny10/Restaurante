@@ -51,8 +51,14 @@ e que o fundo e a letra continue o mesmo*/
 
 /*Definindo que o botão de salvar as alterações tenha uma largura de 12rem, e uma altura de 4rem
 e com o tamanho da fonte de 2rem */
-.perfil_infos button{
+.salvar{
     width: 12rem;
     height: 4rem;
     font-size: 2rem;
+}
+
+.passAlterar{
+    width: 15rem;
+    font-size: 2rem;
+    margin-left: 2rem;
 }
