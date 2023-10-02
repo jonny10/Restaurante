@@ -6,37 +6,42 @@
     <div class="row justify-content-md-center">
         <div class="card text-bg-dark" style="width: 50%; padding: 3rem; border: 0.2rem solid white; border-radius: 2rem; ">
             <!--Formulário com as informações usuario para efetuar o cadastro-->
-            <form  method="post">
+            <form  method="post" action="/realizar-cadastro">
                 <!--Divs para separar os inputs e labels de cada informação do usuario-->
                 <!--Nome do usuario, utilizando o boostrap para personalizar-->
                 <div class="mb-2">
                     <label style="font-size: 2rem;" for="nome" class="form-label">Nome</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" id="nome">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="nome" id="nome">
                 </div>
                 <!--Email do usuario-->
                 <div class="mb-2">
                     <label style="font-size: 2rem;" for="exampleInputEmail1" class="form-label">Email</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <!--Endereço do usuario-->
+                <div class="mb-2">
+                    <label style="font-size: 2rem;" for="endereco" class="form-label">Endereço</label>
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="endereco" id="endereco">
                 </div>
                 <!--CEP do usuario-->
                 <div class="mb-2">
                     <label style="font-size: 2rem;" for="cep" class="form-label">CEP</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" id="cep" required maxlength="9">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="cep" id="cep" required maxlength="9">
                 </div>
                 <!--Complemento do usuario-->
                 <div class="mb-2">
                     <label style="font-size: 2rem;" for="complemento" class="form-label">Complemento</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" id="complemento">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="complemento" id="complemento">
                 </div>
                 <!--Telefone do usuario-->
                 <div class="mb-2">
                     <label style="font-size: 2rem;" for="telefone" class="form-label">Telefone</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="tel" class="form-control" id="telefone">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="tel" class="form-control" name="telefone" id="telefone">
                 </div>
                 <!--Senha do usuario-->
                 <div class="mb-2">
                     <label  style="font-size: 2rem;" for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="password" class="form-control" id="exampleInputPassword1">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="password" class="form-control" name="senha" id="exampleInputPassword1">
                 </div>
                 <!--Botões para enviar o formulário e realizar o cadastro do usuario na plataforma e o outro botão é para limpar todos os campo-->
                 <div style="width: 100%; height: 5rem; " class="btn-group" role="group" aria-label="Basic outlined example">

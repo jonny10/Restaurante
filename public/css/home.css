@@ -40,6 +40,7 @@ do espaço, e que sua largura minima é de 350px, e que seus textos fiquem na es
 /*Definindo que as imagens dos itens tenham 300px e uma borda arredondada em 10px*/
 .item img{
     width: 300px;
+    height: 168.75px;
     border-radius: 10px;
 }
 
@@ -89,7 +90,7 @@ e quando deslizado para baixo fique fixo na tela*/
     border-radius: 80px;
     position: sticky;
     top: 21%;
-    z-index: -1;
+    z-index: 1;
 }
 
 /*Definindo que o titulo do menu fique no centro, tenha uma fonte de 35px e uma margem em baixo de 5px*/

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/perfil.css">
     <link rel="stylesheet" href="/css/pedidos.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/flash.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante</title>
 </head>
@@ -20,6 +21,7 @@
     {{>_header}}
     <!--Aqui será uma variavel do handlebars onde será inserido o corpo do html dependendo da rota-->
     <div class="corpo">
+        {{>_flash}}
         {{{body}}}
     </div>
     {{>_footer}}

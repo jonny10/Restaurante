@@ -3,9 +3,45 @@
     const app = express()
     const { engine } = require('express-handlebars')
     const admin = require("./routes/admin")
-    const usuario = require("./routes/usuario")
+    const usuario = require("./routes/usuario_route")
     const path = require('path')
+    const session = require('express-session')
+    const flash = require('connect-flash')
+    const passport = require("passport")
+    require("./config/auth")(passport)
 // Configurações
+    // Public
+        app.use(express.static(path.join(__dirname, "public")))
+    // Sessão
+        app.use(session({
+            secret: "pRN?I7%1~0'_",
+            resave: true,
+            saveUninitialized: true
+        }))
+        app.use(passport.initialize())
+        app.use(passport.session())
+        app.use(flash())
+    // Middleware
+        app.use((req, res, next) => {
+            res.locals.success_msg = req.flash("success_msg")
+            res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
+            res.locals.user = req.user || null
+            next()
+        })
+        app.use((req, res, next) => {
+            if(req.user){
+                if(req.user.dataValues.perfil_id == 2){
+                    res.locals.eAdminLocal = 1
+                    next()
+                }else{
+                    res.locals.eAdminLocal = null 
+                    next()
+                }
+            }else{
+                next()
+            }
+        })
     // Handlebars
         app.engine('handlebars', engine({
             defaultLayout: 'main',
@@ -15,14 +51,13 @@
             },
         }))
         app.set('view engine', 'handlebars')
-    // Public
-        app.use(express.static(path.join(__dirname, "public")))
     // Body-Parser
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
+    const Cronograma = require("./models/Cronograma")
 // Rotas
     //Home
     /*Uma rota inicial que busca no banco de dados todos os itens e verififica o tipo de cada item
@@ -61,10 +96,10 @@
                     doces.push(itens[i])
                 }
                 if (tipo == 3){
-                    salgados.push(itens[i])
+                    lanches.push(itens[i])
                 }
                 if (tipo == 4){
-                    lanches.push(itens[i])
+                    salgados.push(itens[i])
                 }
                 if (tipo == 5){
                     porcoes.push(itens[i])
@@ -96,7 +131,13 @@
     //Informações
     /*Rota para visualizar as informações do restaurante */
         app.get("/informacoes", function(req, res){
-            res.render("informacoes")
+            Cronograma.findAll().then((cronograma) => {
+                res.render("informacoes", {cronograma: cronograma})
+            }).catch((err) => {
+                let erro = "não foi possivel carregar o cronograma " + err
+                res.render("informacoes", {cronograma: erro})
+            })
+            
         })
 
    //Contratamos 
