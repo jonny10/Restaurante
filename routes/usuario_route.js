@@ -6,6 +6,7 @@ const bcrypt  = require ('bcryptjs')
 const passport = require("passport")
 const {eUsuario} = require("../helpers/acesso")
 
+
 //Cadastro
 /*Rota para realizar o cadastro */
     router.get("/cadastro", function(req, res){
@@ -15,48 +16,52 @@ const {eUsuario} = require("../helpers/acesso")
 //Cadastrar
 /*Rota para cadastrar o usuario no banco de dados*/
     router.post("/realizar-cadastro", function(req, res){
-        cadastrar = Usuario.build(
-            {
-                nome: req.body.nome,
-                email: req.body.email,
-                perfil_id: 1,
-                endereco: req.body.endereco,
-                cep: req.body.cep,
-                complemento: req.body.complemento,
-                telefone: req.body.telefone,
-                senha: req.body.senha
-            }
-        )
-
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(cadastrar.senha, salt, function(err, hash) {
-                if(err){
-                    res.send("Vish paizão o hash falho")
-                }else{
-                    cadastrar.senha = hash
-
-                    cadastrar.save().then(
-                        (usuario) => {
-                            req.login(usuario, {session: true}, (err) => {
-                                if (err) {
-                                    req.flash('error_msg', "Usuario Cadastrado, realize o login")
-                                    res.redirect('/')
-                                }
-                          
-                                // Redirecione para a página de perfil ou ação desejada após o login automático
-                                req.flash('success_msg', "Cadastrado com sucesso")
-                                res.redirect('/')
-                            })
-                            
-                        }
-                    ).catch(
-                        (erro) => {
-                            res.send("Falho a inserção no bd paizão" + erro)
-                        }
-                    )
+        if(checkForm.nameAlert){
+            cadastrar = Usuario.build(
+                {
+                    nome: req.body.nome,
+                    email: req.body.email,
+                    perfil_id: 1,
+                    endereco: req.body.endereco,
+                    cep: req.body.cep,
+                    complemento: req.body.complemento,
+                    telefone: req.body.telefone,
+                    senha: req.body.senha
                 }
+            )
+    
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(cadastrar.senha, salt, function(err, hash) {
+                    if(err){
+                        res.send("Vish paizão o hash falho")
+                    }else{
+                        cadastrar.senha = hash
+    
+                        cadastrar.save().then(
+                            (usuario) => {
+                                req.login(usuario, {session: true}, (err) => {
+                                    if (err) {
+                                        req.flash('error_msg', "Usuario Cadastrado, realize o login")
+                                        res.redirect('/')
+                                    }
+                              
+                                    // Redirecione para a página de perfil ou ação desejada após o login automático
+                                    req.flash('success_msg', "Cadastrado com sucesso")
+                                    res.redirect('/')
+                                })
+                                
+                            }
+                        ).catch(
+                            (erro) => {
+                                res.send("Falho a inserção no bd paizão" + erro)
+                            }
+                        )
+                    }
+                })
             })
-        })
+        }else{
+            req.flash("error_msg", "Insira as informações do cadastro corretamente!")
+        }
     })
 
 //Login

@@ -74,9 +74,11 @@ definindo as cores como branco*/
 
 /*Centralizando o titulo e definindo o seu tamanho*/
 .title h1{
+    font-size: 100%;
     margin: auto;
     width: 100%;
-    font-size: 250%;
+    height: 100%;
+    font-size: 2em;
     text-align: center;
     height: auto;
 }

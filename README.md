@@ -53,3 +53,8 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 após isso...
 
 Validar TUDO 
+
+02/10/2023: Bom dia Bom dia, hoje vou resolver algumas coisinhas e validar todos os formulários e também buscar um pouco de erros e criar páginas para resolver questões
+
+login, caixa: lembrar de mim
+tela de carregamento
