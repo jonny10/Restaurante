@@ -10,7 +10,7 @@ const {eAdmin} = require("../helpers/acesso")
 
 //rota inicial do admin, onde ficará as configurações disponiveis para o site
 router.get('/', eAdmin, async  (req, res) => {
-    const itens = await Item.findAll({include: 'tamanho'})
+    const itens = await Item.findAll({include: ['tamanho', 'tipo']})
     for (var i = 0; i < itens.length; i++) {
         imagem = itens[i]['dataValues']['imagem_do_item']
         itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(imagem, 'binary').toString('base64')
@@ -69,7 +69,7 @@ e enviado a um formulário para ficar no value dos inputs e gerar um formulario 
 para que o admin possa edita-lo*/
 router.get('/editar-item/:id', eAdmin, async (req, res) => {
     const item = await Item.findAll({
-        include: 'tamanho',
+        include: ['tamanho', 'tipo'],
         where: {
             id: req.params.id
         }
