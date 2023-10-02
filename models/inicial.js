@@ -3,6 +3,8 @@ const Tipo = require("./Tipo")
 const Tamanho = require("./Tamanho")
 const Item = require("./Item")
 const Perfil = require("./Perfil")
+const Usuario = require("./Usuario")
+const { Op } = require("sequelize");
 
 //const pratos = Tipo.create({tipo: "Almoço"})
 //const doces = Tipo.create({tipo: "Doces"})
@@ -52,6 +54,16 @@ const Perfil = require("./Perfil")
 /*perfil = Perfil.create(
     {
         perfil: "Admin"
+    }
+)*/
+/*
+Usuario.destroy(
+    {
+        where: {
+            id: {
+                [Op.gt]: 2
+            }
+        }
     }
 )*/
 

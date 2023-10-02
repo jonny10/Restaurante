@@ -62,3 +62,23 @@ e com o tamanho da fonte de 2rem */
     font-size: 2rem;
     margin-left: 2rem;
 }
+
+.deletar{
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.pop{
+    background-color: #000000;
+    border: 0.1rem solid white;
+    color: white;
+    padding: 2rem;
+}
+
+.pop h1{
+    font-size: 3rem;
+}
+
+.pop-buttons{
+    border-top: none;
+}

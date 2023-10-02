@@ -111,8 +111,6 @@ definindo as cores como branco*/
 
 /*Definindo as propriedades do link que abre o dropdown*/
 .caminhos {
-    width: 15rem;
-    
     background-color: transparent;
     color: white;
     display: flex;

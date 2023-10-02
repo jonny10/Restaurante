@@ -10,6 +10,8 @@
     const passport = require("passport")
     require("./config/auth")(passport)
 // Configurações
+    // Public
+        app.use(express.static(path.join(__dirname, "public")))
     // Sessão
         app.use(session({
             secret: "pRN?I7%1~0'_",
@@ -19,6 +21,27 @@
         app.use(passport.initialize())
         app.use(passport.session())
         app.use(flash())
+    // Middleware
+        app.use((req, res, next) => {
+            res.locals.success_msg = req.flash("success_msg")
+            res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
+            res.locals.user = req.user || null
+            next()
+        })
+        app.use((req, res, next) => {
+            if(req.user){
+                if(req.user.dataValues.perfil_id == 2){
+                    res.locals.eAdminLocal = 1
+                    next()
+                }else{
+                    res.locals.eAdminLocal = null 
+                    next()
+                }
+            }else{
+                next()
+            }
+        })
     // Handlebars
         app.engine('handlebars', engine({
             defaultLayout: 'main',
@@ -28,25 +51,9 @@
             },
         }))
         app.set('view engine', 'handlebars')
-    // Public
-        app.use(express.static(path.join(__dirname, "public")))
     // Body-Parser
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
-    // Middleware
-        app.use((req, res, next) => {
-            res.locals.success_msg = req.flash("success_msg")
-            res.locals.error_msg = req.flash("error_msg")
-            res.locals.error = req.flash("error")
-            res.locals.user = req.user || null
-            let eAdminLocal = null
-            if(req.user)
-                if(req.user.dataValues.perfil_id == 2){
-                    eAdminLocal = req.user
-                }
-            res.locals.eAdminLocal = eAdminLocal || null
-            next()
-        })
 // Carregando models
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
