@@ -31,7 +31,7 @@ const Usuario = banco.define('usuario', {
         allowNull: false,
     },
     cep: {
-        type: DataTypes.INTEGER(8),
+        type: DataTypes.STRING(9),
         allowNull: false
     },
     complemento: {
@@ -39,7 +39,7 @@ const Usuario = banco.define('usuario', {
         allowNull: true
     },
     telefone: {
-        type: DataTypes.STRING(11),
+        type: DataTypes.STRING(14),
         allowNull: false
     },
     senha: {

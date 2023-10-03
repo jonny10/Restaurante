@@ -58,3 +58,5 @@ Validar TUDO
 
 login, caixa: lembrar de mim
 tela de carregamento
+
+03/10/2023: Hoje finalizei a validação dos formulários de cadastro e alteração do usuario
