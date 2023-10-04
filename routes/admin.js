@@ -6,6 +6,7 @@ const Cronograma = require("../models/Cronograma")
 const multer = require('multer')
 const upload = multer()
 const {eAdmin} = require("../helpers/acesso")
+const {verificarItem} = require("../helpers/verificar")
 
 
 //rota inicial do admin, onde ficará as configurações disponiveis para o site
@@ -28,26 +29,33 @@ router.get('/adicionar-item', eAdmin, (req, res) => {
 as informações dos inputs e faça um insert no banco de dado via sequelize e após isso
 redirecione o usuario a página inicial de ADM*/
 router.post('/form-item', eAdmin, upload.single('imagem'), (req, res) => {
-    titulo = req.body.nome
-    descricao = req.body.descricao
-    tipo = req.body.tipo
-    tamanho = req.body.tamanho
-    valor = req.body.valor
-    imageItem = req.file.buffer
-    Item.create(
-        {
-            titulo: titulo, 
-            descricao: descricao, 
-            tamanho_id: tamanho, 
-            tipo_id: tipo, 
-            imagem_do_item: imageItem, 
-            valor: valor
-        }
-    ).then(() => {
-        res.redirect('/')
-    }).catch((erro) => {
-        res.send('falho paizão' + erro)
-    })
+    let validarItem = verificarItem(req.body.nome, req.body.valor, req.body.tipo)
+    if(validarItem.validar){ 
+        titulo = req.body.nome
+        descricao = req.body.descricao
+        tipo = req.body.tipo
+        tamanho = req.body.tamanho
+        valor = req.body.valor
+        imageItem = req.file.buffer
+        Item.create(
+            {
+                titulo: titulo, 
+                descricao: descricao, 
+                tamanho_id: tamanho, 
+                tipo_id: tipo, 
+                imagem_do_item: imageItem, 
+                valor: valor
+            }
+        ).then(() => {
+            res.redirect('/')
+        }).catch((erro) => {
+            res.send('falho paizão' + erro)
+        })
+    }else{
+        req.flash("error_msg", validarItem.erro)
+        res.redirect('/admin/adicionar-item')
+    }
+
 })
 
 /*rota em get que recebe o id do item como paremetro para executar um delete no banco de dados
@@ -84,25 +92,31 @@ router.get('/editar-item/:id', eAdmin, async (req, res) => {
 /*Rota post que recebe o formulário de edição de itens e recebe as informações do form e executa um
 update no banco de dados  e altera aquele item via sequelize e após isso redireciona a página inicial adm*/
 router.post('/alterar-item', eAdmin, upload.single('imagem'), (req, res) => {
-    Item.update(
-        {
-            titulo: req.body.nome, 
-            descricao: req.body.descricao, 
-            tamanho_id: req.body.tamanho, 
-            tipo_id: req.body.tipo, 
-            imagem_do_item: req.file.buffer, 
-            valor: req.body.valor
-        },
-        {
-            where: {
-                id: req.body.item
+    let validarItem = verificarItem(req.body.nome, req.body.valor, req.body.tipo)
+    if(validarItem.validar){ 
+        Item.update(
+            {
+                titulo: req.body.nome, 
+                descricao: req.body.descricao, 
+                tamanho_id: req.body.tamanho, 
+                tipo_id: req.body.tipo, 
+                imagem_do_item: req.file.buffer, 
+                valor: req.body.valor
+            },
+            {
+                where: {
+                    id: req.body.item
+                }
             }
-        }
-    ).then(() => {
-        res.redirect('/admin')
-    }).catch((erro) => {
-        res.send('falho paizão' + erro)
-    })
+        ).then(() => {
+            res.redirect('/admin')
+        }).catch((erro) => {
+            res.send('falho paizão' + erro)
+        })
+    }else{
+        req.flash("error_msg", validarItem.erro)
+        res.redirect('/admin/editar-item/'+ req.body.item)
+    }
 })
 
 /*Rota post que recebe o formulário do cronograma que está na página inicial de adm e realiza um update

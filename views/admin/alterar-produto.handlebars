@@ -15,15 +15,18 @@
                     <label style="font-size: 2rem; margin-bottom: 0;" for="nome" class="form-label">Titulo</label>
                     <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="nome" value="{{titulo}}" id="nome">
                 </div>
+                <div class="alerta_validacao" id="alertaNome">
+                    <p>⚠ O titulo do item deve conter no minimo 2 caracteres e no máximo 50 caracteres ⚠</p>
+                </div>
                 <!--Descrição do item-->
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;" for="descricao" class="form-label">Descrição</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="descricao" value="{{descricao}}" id="descricao">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" name="descricao" value="{{descricao}}" id="descricao" required>
                 </div>
                 <!--Tipo do item-->
                 <div class="mb-2">
                     <label style="font-size: 2rem; margin-bottom: 0;"  class="form-label">Tipo</label>
-                    <select style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" name="tipo" class="form-select" aria-label="Default select example">
+                    <select style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" name="tipo" id="tipo" class="form-select" aria-label="Default select example">
                         <option value="{{tipo_id}}" selected>{{tipo.tipo}}</option>
                         <option value="1">Almoço</option>
                         <option value="2">Doces</option>
@@ -33,6 +36,9 @@
                         <option value="6">Refrigerante/Suco</option>
                         <option value="7">Cerveja</option>
                     </select>
+                </div>
+                <div class="alerta_validacao" id="alertaTipo">
+                    <p>⚠ Selecione o tipo do Item ⚠</p>
                 </div>
                 <!--Tamanho do item-->
                 <div class="mb-2">
@@ -49,10 +55,13 @@
                     <label  style="font-size: 2rem; margin-bottom: 0; " for="valor" class="form-label">Valor</label>
                     <input style="font-size: 2rem ; font-family: Arial, Helvetica, sans-serif;" type="number" min="0.01" step="0.01" class="form-control" name="valor" value="{{valor}}" id="valor">
                 </div>
+                <div class="alerta_validacao" id="alertaValor">
+                    <p>⚠ Insira um valor válido, por exemplo 25,50 ⚠</p>
+                </div>
                 <!--Imagem do item-->
                 <div class="mb-2">
                     <label  style="font-size: 2rem; margin-bottom: 0;" for="imagem" class="form-label ">Imagem</label>
-                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="file" accept="image/*" class="form-control" name="imagem" id="imagemUpdate">
+                    <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" value="{{imagem_do_item}}" type="file" accept="image/*" class="form-control" name="imagem" id="imagemUpdate" required>
                     <img style="margin-bottom: 1rem;" width="100%" id="mudarImagem" src={{imagem_do_item}} alt="Imagem do item inserido pelo input" />
                 </div>
                 <!--Botões para enviar o formulário de alteração ou limpar todos os campos-->
@@ -66,3 +75,4 @@
     </div>
 </div>
 <script src="/js/pre_imagem.js"></script>
+<script src="/js/validar_item.js"></script>

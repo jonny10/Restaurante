@@ -26,7 +26,7 @@ module.exports = {
                             return {validar: false, erro: "O telefone está inválido!"}
                         }else{
                             if(senha.length >= 8 && /[A-Z]/.test(senha) && /[0-9]/.test(senha)){
-                                return {validar: false, erro: null}
+                                return {validar: true, erro: null}
                             }else{
                                 return {validar: false, erro: "A senha não atende aos requisitos!"}
                             }
@@ -43,6 +43,29 @@ module.exports = {
             return {validar: true, erro: null}
         }else{
             return {validar: false, erro: "Não foi possivel realizar altera a senha, a senha não atende aos requisitos!"}
+        }
+    },
+    verificarItem: (nome, valor, tipo) => {
+        if(nome && valor){
+            if (nome.length < 2 || nome.length > 50){
+                return {validar: false, erro: "O nome do item está com 2 caracteres ou com mais de 50 caracteres!"}
+            }else{
+                function validateValor(valor) {
+                    var re = /[0-9]\.[0-9]{2,2}$/
+                    return re.test(valor);
+                }
+                if (validateValor(valor)){
+                    if (tipo){
+                        return {validar: true, erro: null}
+                    }else{
+                        return {validar: false, erro: "Selecione o tipo do Item!"} 
+                    }
+                }else{
+                    return {validar: false, erro: "O campo valor não atende aos requisitos!"}
+                }
+            }
+        }else{
+            return {validar: false, erro: "Não foi possivel adicionar o item, algum campo obrigatorio está vazio!"}
         }
     }
 }

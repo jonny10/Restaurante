@@ -2,10 +2,8 @@ document.getElementById('nome').addEventListener('input', function (e) {
     const nameAlert = e.target.value;
     if (nameAlert.length < 2 || nameAlert.length > 50) {
         document.getElementById('alertaNome').style.display = "block";
-        checkForm.nameAlert = false;
     } else {
         document.getElementById('alertaNome').style.display = "none";
-        checkForm.nameAlert = true;
     }
 });
 
@@ -18,10 +16,8 @@ document.getElementById('email').addEventListener('input', function (e) {
     const emailAlert = e.target.value;
     if (!validateEmail(emailAlert)) {
         document.getElementById('alertaEmail').style.display = "block";
-        checkForm.emailAlert = false;
     } else {
         document.getElementById('alertaEmail').style.display = "none";
-        checkForm.emailAlert = true;
     }
 });
 
@@ -34,10 +30,8 @@ document.getElementById('cep').addEventListener('input', function (e) {
     const cepAlert = e.target.value;
     if (!validateCep(cepAlert)) {
         document.getElementById('alertaCep').style.display = 'block';
-        checkForm.numeroAlert = false;
     } else {
         document.getElementById('alertaCep').style.display = 'none';
-        checkForm.numeroAlert = true;
     }
 });
 
@@ -59,12 +53,8 @@ document.getElementById('telefone').addEventListener('input', function (e) {
     const numeroAlert = e.target.value;
     if (!validateTelefone(numeroAlert)) {
         document.getElementById('alertaTelefone').style.display = 'block';
-        checkForm.numeroAlert = false;
-
     } else {
         document.getElementById('alertaTelefone').style.display = 'none';
-        checkForm.numeroAlert = true;
-
     }
 });
 
