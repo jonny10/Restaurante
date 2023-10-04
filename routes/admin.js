@@ -47,9 +47,11 @@ router.post('/form-item', eAdmin, upload.single('imagem'), (req, res) => {
                 valor: valor
             }
         ).then(() => {
-            res.redirect('/')
+            req.flash("success_msg", "Item criado com sucesso!")
+            res.redirect('/admin')
         }).catch((erro) => {
-            res.send('falho paizão' + erro)
+            req.flash("error_msg", "Houve um erro ao inserir o item no banco de dados, tente novamente! " + erro)
+            res.redirect('/admin/adicionar-item')
         })
     }else{
         req.flash("error_msg", validarItem.erro)
@@ -66,9 +68,11 @@ router.get('/apagar-item/:id', eAdmin, (req, res) => {
             id: req.params.id
         }
     }).then(() => {
+        req.flash("success_msg", "Item apagado com sucesso!")
         res.redirect('/admin')
     }).catch((err) => {
-        res.send('Falho paizão pq' + err)
+        req.flash("error_msg", "Não foi possivel apagar o item do banco de dados, tente novamente! " + err)
+        res.redirect('/admin')
     })
 })
 
@@ -109,9 +113,11 @@ router.post('/alterar-item', eAdmin, upload.single('imagem'), (req, res) => {
                 }
             }
         ).then(() => {
+            req.flash("success_msg", "Item alterado com sucesso!")
             res.redirect('/admin')
         }).catch((erro) => {
-            res.send('falho paizão' + erro)
+            req.flash("error_msg", "Não foi possivel alterar as informações desse item no banco, tente novamente! " + erro)
+            res.redirect('/admin')
         })
     }else{
         req.flash("error_msg", validarItem.erro)
@@ -137,9 +143,11 @@ router.post('/alterar-cronograma', eAdmin, (req, res) => {
             }
         }
     ).then(() => {
+        req.flash("success_msg", "Cronograma alterado com sucesso!")
         res.redirect('/admin')
     }).catch((err) => {
-        res.send('falho cria, pq ' + err)
+        req.flash("error_msg", "Não foi possivel alterar o cronograma no banco de dados, tente novamente! " + err)
+        res.redirect('/admin')
     })
 })
 

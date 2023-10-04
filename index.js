@@ -152,6 +152,11 @@
     //usuario
         app.use ("/", usuario)
 
+//Rota não encontrada
+    app.use(function(req, res, next) {
+        res.status(404).render("rota404")
+    });
+
 // Outros
 port = 8800
 app.listen(port, () => {

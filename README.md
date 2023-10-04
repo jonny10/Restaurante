@@ -52,7 +52,7 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 
 após isso...
 
-Validar TUDO 
+Validar TUDO ✅
 
 02/10/2023: Bom dia Bom dia, hoje vou resolver algumas coisinhas e validar todos os formulários e também buscar um pouco de erros e criar páginas para resolver questões
 
@@ -61,4 +61,8 @@ tela de carregamento
 
 03/10/2023: Hoje finalizei a validação dos formulários de cadastro e alteração do usuario
 
-verificar os caminhos fora da validação e criar as páginas de nao acesso
+verificar os caminhos fora da validação e criar as páginas de nao acesso✅
+
+04/10/2023: Hoje vou verificar os caminhos e criar as páginas de não acesso
+
+verificar porque o cadastro nao vai pra frente

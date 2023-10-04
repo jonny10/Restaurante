@@ -17,6 +17,7 @@ const {verificarSenha} = require("../helpers/verificar")
 //Cadastrar
 /*Rota para cadastrar o usuario no banco de dados*/
     router.post("/realizar-cadastro", function(req, res){
+        res.render("carregando", {layout: false})
         let verificar = VerificarCadastro(req.body.nome, req.body.email, req.body.cep, req.body.telefone, req.body.senha)
         if(verificar.validar){
             cadastrar = Usuario.build(
@@ -35,7 +36,8 @@ const {verificarSenha} = require("../helpers/verificar")
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(cadastrar.senha, salt, function(err, hash) {
                     if(err){
-                        res.send("Vish paizão o hash falho")
+                        req.flash("error_msg", "Não foi possivel realizar o hash na senha")
+                        res.redirect("/cadastro")
                     }else{
                         cadastrar.senha = hash
                         cadastrar.save().then(
@@ -52,7 +54,7 @@ const {verificarSenha} = require("../helpers/verificar")
                             }
                         ).catch(
                             (erro) => {
-                                req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados " + erro)
+                                req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! " + erro)
                                 res.redirect('/cadastro')
                             }
                         )
@@ -120,9 +122,11 @@ router.post("/realizar-login",
                         }
                     }
                 ).then(() => {
+                    req.flash("success_msg", "Informações do perfil alteradas com sucesso!")
                     res.redirect('/perfil')
                 }).catch((err) => {
-                    res.send('falho cria, pq ' + err)
+                    req.flash("error_msg", "Não foi possivel alterar as informações do perfil no banco de dados, tente novamente! ")
+                    res.redirect('/perfil')
                 })
             }
         }else{
