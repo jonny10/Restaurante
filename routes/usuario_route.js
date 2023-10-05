@@ -17,7 +17,6 @@ const {verificarSenha} = require("../helpers/verificar")
 //Cadastrar
 /*Rota para cadastrar o usuario no banco de dados*/
     router.post("/realizar-cadastro", function(req, res){
-        res.render("carregando", {layout: false})
         let verificar = VerificarCadastro(req.body.nome, req.body.email, req.body.cep, req.body.telefone, req.body.senha)
         if(verificar.validar){
             cadastrar = Usuario.build(

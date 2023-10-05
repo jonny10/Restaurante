@@ -18,6 +18,10 @@ html {
     font-size: 62.5%;
 }
 
+/*.content{
+    display: none;
+}*/
+
 /*Definindo padrões gerais do corpo do site*/
 body {
     font-family: Kaushan;

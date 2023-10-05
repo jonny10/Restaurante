@@ -1,7 +1,30 @@
-.loading{
-    background-color: rgba(255, 0, 0, 0.5);
+.centralize{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(24, 23, 23, 0.5);
+    top: 0;
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 5;
+    z-index: 995; 
+}
+
+/*.carregar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(24, 23, 23, 0.5);
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 995; 
+}*/
+
+.loading{
+    width: 20rem;
+    height: 20rem;
+    font-size: 10rem;
+    z-index: 999;
 }
