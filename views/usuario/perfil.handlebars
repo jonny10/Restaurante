@@ -48,9 +48,9 @@
                     {{/if}}
                 </div>
                 <!--Botão para salvar as alterações realizadas nas informações do perfil-->
-                <button type="submit" class="btn btn-outline-light salvar" >Salvar</button>
-                <button type="button"  class="btn btn-outline-light passAlterar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Alterar senha</button>
-                <button type="button"  class="btn btn-outline-light deletar" data-bs-toggle="modal" data-bs-target="#deltarconta">Deletar minha conta</button>
+                <button onclick="travarTela()" type="submit" class="btn btn-outline-light salvar" >Salvar</button>
+                <button type="button" class="btn btn-outline-light passAlterar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Alterar senha</button>
+                <button type="button" class="btn btn-outline-light deletar" data-bs-toggle="modal" data-bs-target="#deltarconta">Deletar minha conta</button>
             </form>
             <!-- Modal alterar senha-->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="modal-footer pop-buttons">
                     <button type="button" class="btn btn-outline-light salvar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-outline-light passAlterar">Salvar</button>
+                    <button type="submit" data-bs-dismiss="modal" onclick="travarTela()" class="btn btn-outline-light passAlterar">Salvar</button>
                     </form>
                 </div>
                 </div>
@@ -96,7 +96,7 @@
                     <button type="button" class="btn btn-outline-light salvar" data-bs-dismiss="modal">Cancelar</button>
                     <form method="post" action="/deletar-conta">
                     <input style="display: none;" type="text" name="confirma" value="sim">
-                    <button type="submit" class="btn btn-outline-light passAlterar">Sim</button>
+                    <button type="submit" data-bs-dismiss="modal" onclick="travarTela()" class="btn btn-outline-light passAlterar">Sim</button>
                     </form>
                 </div>
                 </div>

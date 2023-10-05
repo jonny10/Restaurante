@@ -12,13 +12,5 @@ destravarTela = () => {
     const overlay = document.getElementById('overlay');
     
     overlay.style.display = 'none'; // Oculta o overlay
-   
+    document.body.style.overflow = 'auto'; // retorna a rolagem da página
 }
-
-/*carregarTela = () => {
-    const content = document.getElementById('content');
-
-    carregar.style.display = 'none'; // Oculta o carregamento
-    content.style.display = 'block'; // Oculta o overlay
-}*/
-

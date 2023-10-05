@@ -93,7 +93,7 @@ router.post("/realizar-login",
 //Alterar perfil
 /*Rota para receber o formulário que altera as informações do usuario*/
     router.post("/alterar-perfil", eUsuario, (req, res) => {
-        let verificar = VerificarCadastro(req.body.nome, req.body.email, req.body.cep, req.body.telefone, req.body.senha)
+        let verificar = VerificarCadastro(req.body.nome, req.body.email, req.body.cep, req.body.telefone, req.user.dataValues.senha)
         if(verificar.validar){
             if(
                 req.user.dataValues.email == req.body.email &&
@@ -130,7 +130,7 @@ router.post("/realizar-login",
             }
         }else{
             req.flash("error_msg", verificar.erro)
-            res.redirect('/cadastro')
+            res.redirect('/perfil')
         }
     })
 

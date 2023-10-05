@@ -139,7 +139,7 @@ router.post('/alterar-cronograma', eAdmin, (req, res) => {
         },
         {
             where: {
-                id: req.user.dataValues.nome
+                id: 1
             }
         }
     ).then(() => {

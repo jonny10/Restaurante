@@ -66,4 +66,14 @@ Usuario.destroy(
         }
     }
 )*/
+/*Usuario.update(
+    {
+        perfil_id: 2
+    },
+    {
+        where: {
+            id: 44
+        }
+    }
+)*/
 

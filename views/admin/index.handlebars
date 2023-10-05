@@ -5,7 +5,7 @@
     <!--Definindo uma divisão para inserir os links de adição e alteração de sessão-->
     <div class="add">
         <!--Link para a página de incersão de item-->
-        <a href="/admin/adicionar-item">Adicionar Item</a>
+        <a onclick="travarTela()" href="/admin/adicionar-item">Adicionar Item</a>
         <!--link para a sessão de cronograma-->
         <a href="#cronograma">Alterar cronograma</a>
     </div>
@@ -65,10 +65,10 @@
         </div>
         <div class="editar">
             <form method="get" action="/admin/apagar-item/{{id}}">
-                <button type="submit">Apagar</button>
+                <button onclick="travarTela()" type="submit">Apagar</button>
             </form>
             <form method="get" action="/admin/editar-item/{{id}}">
-                <button type="submit">Editar</button>
+                <button onclick="travarTela()" type="submit">Editar</button>
             </form>
         </div>
     </div>
@@ -110,11 +110,11 @@
                                 <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sexta}}" name="sexta" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
-                                <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Sábado-feira</span>
+                                <span style="font-size: 2rem; margin-bottom: 0;" class="input-group-text" id="addon-wrapping">Sábado</span>
                                 <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="text" class="form-control" value="{{sabado}}" name="sabado" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                             <div style="width: 100%; height: 5rem; " class="btn-group" role="group" aria-label="Basic outlined example">
-                                <button type="submit" class="btn btn-outline-light" style="font-size: 2rem;">Alterar</button>
+                                <button type="submit" onclick="travarTela()" class="btn btn-outline-light" style="font-size: 2rem;">Alterar</button>
                                 <button type="reset" class="btn btn-outline-light" style="font-size: 2rem;">Limpar</button>
                             </div>
                             {{/each}}
