@@ -26,7 +26,6 @@ module.exports = {
                             return {validar: false, erro: "O telefone está inválido!"}
                         }else{
                             if(senha.length >= 8 && /[A-Z]/.test(senha) && /[0-9]/.test(senha)){
-                                
                                 return {validar: true, erro: null}
                             }else{
                                 return {validar: false, erro: "A senha não atende aos requisitos!"}

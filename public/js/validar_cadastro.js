@@ -21,6 +21,12 @@ document.getElementById('email').addEventListener('input', function (e) {
     }
 });
 
+document.getElementById('cep').addEventListener('input', function (e) {
+    e.target.value = e.target.value
+        .replace(/\D/g, '') // Remove todos os caracteres não numéricos
+        .replace(/(\d{5})(\d{3})/, '$1-$2'); // Formata como cinco números, traço, três números
+});
+
 function validateCep(cep) {
     var re = /[0-9]{5}-[0-9]{3}/
     return re.test(cep);

@@ -71,4 +71,5 @@ verificar porque o cadastro nao vai pra frente✅
 
 alterar fonte do acesso negado✅
 
-alterar a verificação para verificar o gmail igual
+alterar a verificação para verificar o gmail igual✅
+campo do CEP foi formatado

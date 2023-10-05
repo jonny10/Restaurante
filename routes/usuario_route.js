@@ -39,21 +39,40 @@ const {verificarSenha} = require("../helpers/verificar")
                         res.redirect("/cadastro")
                     }else{
                         cadastrar.senha = hash
-                        cadastrar.save().then(
+                        Usuario.findOne({
+                            where: {
+                                email: req.body.email
+                            }
+                        }).then(
                             (usuario) => {
-                                req.login(usuario, {session: true}, (err) => {
-                                    if (err) {
-                                        req.flash('error_msg', "Usuario Cadastrado, realize o login")
-                                        res.redirect('/')
-                                    }
-                                    // Redirecione para a página de perfil ou ação desejada após o login automático
-                                    req.flash('success_msg', "Cadastrado com sucesso")
-                                    res.redirect('/')
-                                })
+                                if(usuario){
+                                    req.flash('error_msg', "Já existe uma conta com esse email, por favor utilize outro email!")
+                                    res.redirect('/cadastro')
+                                }else{
+                                    cadastrar.save().then(
+                                        (usuario) => {
+                                            req.login(usuario, {session: true}, (err) => {
+                                                if (err) {
+                                                    req.flash('error_msg', "Usuario Cadastrado, realize o login")
+                                                    res.redirect('/')
+                                                }
+                                                // Redirecione para a página de perfil ou ação desejada após o login automático
+                                                req.flash('success_msg', "Cadastrado com sucesso")
+                                                res.redirect('/')
+            
+                                            })
+                                        }
+                                    ).catch(
+                                        (erro) => {
+                                            req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! ")
+                                            res.redirect('/cadastro')
+                                        }
+                                    )
+                                }
                             }
                         ).catch(
-                            (erro) => {
-                                req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! " + erro)
+                            (err) => {
+                                req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! ")
                                 res.redirect('/cadastro')
                             }
                         )
@@ -106,26 +125,35 @@ router.post("/realizar-login",
                 req.flash("error_msg", "Nehuma informação foi alterada")
                 res.redirect('/perfil')
             }else{
-                Usuario.update(
-                    {
-                        email: req.body.email,
-                        nome: req.body.nome,
-                        telefone: req.body.telefone,
-                        endereco: req.body.endereco,
-                        cep: req.body.cep,
-                        complemento: req.body.complemento
-                    },
-                    {
-                        where: {
-                            id: req.user.dataValues.id
-                        }
+                Usuario.findOne({where:{email: req.body.email}}).then((usuario) => {
+                    if(usuario){
+                        req.flash('error_msg', "Já existe uma conta com esse email, por favor utilize outro email!")
+                        res.redirect('/perfil')
+                    }else{
+                        Usuario.update(
+                            {
+                                email: req.body.email,
+                                nome: req.body.nome,
+                                telefone: req.body.telefone,
+                                endereco: req.body.endereco,
+                                cep: req.body.cep,
+                                complemento: req.body.complemento
+                            },
+                            {
+                                where: {
+                                    id: req.user.dataValues.id
+                                }
+                            }
+                        ).then(() => {
+                            req.flash("success_msg", "Informações do perfil alteradas com sucesso!")
+                            res.redirect('/perfil')
+                        }).catch((err) => {
+                            req.flash("error_msg", "Não foi possivel alterar as informações do perfil no banco de dados, tente novamente! "+err)
+                            res.redirect('/perfil')
+                        })
                     }
-                ).then(() => {
-                    req.flash("success_msg", "Informações do perfil alteradas com sucesso!")
-                    res.redirect('/perfil')
                 }).catch((err) => {
-                    req.flash("error_msg", "Não foi possivel alterar as informações do perfil no banco de dados, tente novamente! ")
-                    res.redirect('/perfil')
+                    req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! ")
                 })
             }
         }else{
