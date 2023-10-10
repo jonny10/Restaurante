@@ -3,7 +3,7 @@ module.exports = {
         if(req.isAuthenticated()){
             return next()
         }
-        res.send("Ce nao ta logado pai, loga ae faz favor")
+        res.render("naoUsuario")
     },
 
     eAdmin:  (req, res, next) => {
@@ -12,6 +12,6 @@ module.exports = {
                 return next()
             }
         }
-        res.send("Sai fora fi, ce nao tem autoridade pra fica aqui!")
+        res.render("naoAdmin")
     }
 }
