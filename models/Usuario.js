@@ -47,6 +47,6 @@ const Usuario = banco.define('usuario', {
         allowNull: false
     }
 })
-Usuario.belongsTo(Perfil, {foreignKey: 'profile_id'})
+Usuario.belongsTo(Perfil, {foreignKey: 'perfil_id'})
 
 module.exports = Usuario

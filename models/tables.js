@@ -1,5 +1,5 @@
 const DataTypes = require('sequelize')
-const banco = require("../conexao_bd")
+const banco = require("./conexao_bd")
 
 banco.authenticate().then(function(){
     console.log("sucesso paizão")
@@ -8,7 +8,7 @@ banco.authenticate().then(function(){
 })
 
 /*TABELA CRONOGRAMA */
-const cronograma = banco.define('cronograma', {
+const Cronograma = banco.define('cronograma', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -34,9 +34,22 @@ const cronograma = banco.define('cronograma', {
     }
 })
 
+/*TABELA PERFIL DO USUARIO*/
+const Perfil = banco.define('perfil', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    perfil: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    }
+})
 
 /*TABELA USUARIO */
-const usuario = banco.define('usuario', {
+const Usuario = banco.define('usuario', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -44,30 +57,47 @@ const usuario = banco.define('usuario', {
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
+    },
+    perfil_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        default: 1,
+        references: {
+            model: Perfil,
+            key: 'id'
+        }
+    },
+    endereco: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     cep: {
-        type: DataTypes.INTEGER(8)
+        type: DataTypes.STRING(9),
+        allowNull: false
     },
     complemento: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
     },
     telefone: {
-        type: DataTypes.STRING(11)
+        type: DataTypes.STRING(14),
+        allowNull: false
     },
     senha: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 })
+Usuario.belongsTo(Perfil, {foreignKey: 'perfil_id'})
 
 /*TABELA STATUS DO PEDIDO */
-const status_do_pedido = banco.define('status_do_pedido', {
+const Status_do_pedido = banco.define('status_do_pedido', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -79,7 +109,7 @@ const status_do_pedido = banco.define('status_do_pedido', {
 })
 
 /*TABELA PEDIDOS */
-const pedidos = banco.define('pedidos', {
+const Pedido = banco.define('pedidos', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -89,7 +119,7 @@ const pedidos = banco.define('pedidos', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: usuario,
+            model: Usuario,
             key: 'id'
         }
     },
@@ -97,7 +127,7 @@ const pedidos = banco.define('pedidos', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: status_do_pedido,
+            model: Status_do_pedido,
             key: 'id'
         }
     },
@@ -105,9 +135,15 @@ const pedidos = banco.define('pedidos', {
         type: DataTypes.TIME  
     }
 })
+Usuario.hasMany(Pedido, {
+    foreignKey: 'usuario_id'
+})
+Pedido.belongsTo(Status_do_pedido, {
+    foreignKey: 'status_id'
+})
 
 /*TABELA TIPOS */
-const tipo = banco.define('tipo', {
+const Tipo = banco.define('tipo', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -116,12 +152,12 @@ const tipo = banco.define('tipo', {
     tipo: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
     }
 })
 
 /*TABELA TAMANHOS */
-const tamanho = banco.define('tamanho', {
+const Tamanho = banco.define('tamanho', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -130,12 +166,12 @@ const tamanho = banco.define('tamanho', {
     tamanho: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
     }
 })
 
 /*TABELA ITEM */
-const item = banco.define('item', {
+const Item = banco.define('item', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -143,38 +179,44 @@ const item = banco.define('item', {
     },
     titulo: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: true
+        allowNull: false,
+        unique: false
     },
     descricao: {
         type: DataTypes.TEXT
     },
     tamanho_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 4,
         references: {
-            model: tamanho,
+            model: Tamanho,
             key: 'id'
         }
     },
     tipo_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
-            model: tipo,
+            model: Tipo,
             key: 'id'
         }
     },
     imagem_do_item: {
-        type: DataTypes.BLOB('medium')
+        type: DataTypes.BLOB('medium'),
+        allowNull: false
     },
     valor: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: true
+        allowNull: false,
+        defaultValue: 0.00
     }
 })
+Item.belongsTo(Tamanho, {foreignKey: 'tamanho_id'})
+Item.belongsTo(Tipo, {foreignKey: 'tipo_id'})
 
 /*TABELA DE JUNÇÃO PEDIDOS_ITEM */
-const pedidos_itens = banco.define('pedidos_itens', {
+const Pedido_item = banco.define('pedidos_itens', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -182,34 +224,38 @@ const pedidos_itens = banco.define('pedidos_itens', {
     },
     pedidos_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
-            model: usuario,
+            model: Pedido,
             key: 'id'
         }
     },
     item_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
-            model: item,
+            model: Item,
             key: 'id'
         }
     },
     quantidade: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false,
+        defaultValue: 1
     },
     valor_item: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: true
+        allowNull: false
     },
     valor_total: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: true
+        allowNull: false
     }
 })
+Pedido.belongsToMany(Item, { through: Pedido_item, foreignKey: 'pedidos_id', uniqueKey: 'id' })
+Item.belongsToMany(Pedido, { through: Pedido_item, foreignKey: 'item_id', uniqueKey: 'id' })
 
+/*
 module.exports = {
     cronograma,
     usuario,
@@ -220,6 +266,7 @@ module.exports = {
     item,
     pedidos_itens
 }
+*/
 
 /** 
  * sincronizar banco
