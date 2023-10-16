@@ -1,3 +1,8 @@
+:root {
+    --preto: #1d1a1a; /*17, 17, 15*/
+    --branco: rgb(230, 222, 222); /*230, 222, 222*/
+}
+
 /*Definindo as propriedades gerais de tudo*/
 *,
 *::after,
@@ -23,7 +28,7 @@ body {
     font-family: Kaushan;
     box-sizing: border-box;
     font-size: 1.5rem;
-    background-color: #000000;
+    background-color: var(--preto);
     max-width: 1920px;
     min-width: 320px;
     width: 100%;
@@ -47,9 +52,9 @@ definindo as cores como branco*/
     display: flex;
     padding-top: 1rem;
     padding-bottom: 0.3rem;
-    border-bottom: 0.2rem solid white;
-    color: white;
-    background-color: rgb(0, 0, 0);
+    border-bottom: 0.2rem solid var(--branco);
+    color: var(--branco);
+    background-color: var(--preto);
 }
 
 /*Dando uma margem de 20pixels a esquerda do logo*/
@@ -103,10 +108,10 @@ definindo as cores como branco*/
     width: 15rem;
     height: 100%;
     border-width: 3px;
-    border-color: white;
+    border-color: var(--branco);
     border-radius: 150px;
     background-color: transparent;
-    color: white;
+    color: var(--branco);
     box-shadow: none;
     border-style: solid;
 }
@@ -114,7 +119,7 @@ definindo as cores como branco*/
 /*Definindo as propriedades do link que abre o dropdown*/
 .caminhos {
     background-color: transparent;
-    color: white;
+    color: var(--branco);
     display: flex;
     align-items: center;
     text-align: center;
@@ -125,13 +130,13 @@ definindo as cores como branco*/
 com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
 .suspenso{
     width: 20rem;
-    background-color: #000000;
-    border: 0.3rem solid white;
+    background-color: var(--preto);
+    border: 0.3rem solid var(--branco);
 }
 
 /*Definindo que os links dentro do dropdown tenham a letra branca*/
 .suspenso a{
-    color: white;
+    color: var(--branco);
     font-size: 3rem;
     padding: 2rem;
     
@@ -142,21 +147,21 @@ com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
 }
 
 .buttons button:hover{
-    background-color: white;
-    color: black;
+    background-color: var(--branco);
+    color: var(--preto);
 }
 
 /*Definindo as propriedadaes da guia*/
 .guia{
-    background-color: #000000;
+    background-color: var(--preto);
     max-width: 70%;
     height: 2.8rem;
     margin: 0 auto;
     display: flex;
-    border-bottom: 0.2rem solid white;
-    color: white;
-    border-left: 0.2rem solid white;
-    border-right: 0.2rem solid white;
+    border-bottom: 0.2rem solid var(--branco);
+    color: var(--branco);
+    border-left: 0.2rem solid var(--branco);
+    border-right: 0.2rem solid var(--branco);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -164,7 +169,7 @@ com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
 /*Definindo que as Div's da guia terão uma borda branca na esquerda e que terá um quato do tamanho total
 do tamanho da guia, e que seu display é flex*/
 .guia div{
-    border-left: 0.2rem solid white;
+    border-left: 0.2rem solid var(--branco);
     width: calc(100%/4);
     display: flex;
 }
@@ -178,7 +183,7 @@ do tamanho da guia, e que seu display é flex*/
 que seu tamanho é 100% e que seu texto ficará no centro*/
 .guia div a{
     text-decoration: none;
-    color: white;
+    color: var(--branco);
     font-size: 2rem;
     height: 100%;
     width: 100%;
@@ -188,7 +193,7 @@ que seu tamanho é 100% e que seu texto ficará no centro*/
 /*Que o corpo tenha uma margem no topo de 13% da tela*/
 .corpo{
     margin-top: 10%;
-    color: white;
+    color: var(--branco);
 }
 
 /*Colocando que o bootstrap não passe do tamanho máximo*/

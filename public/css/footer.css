@@ -2,8 +2,8 @@
 com a letra branca, display flexivel com a fonte de 2rem e espaçamento de 2rem
 e uma margem em cima de 5rem*/
 .footer{
-    border-top: 0.2rem solid white;
-    color: white;
+    border-top: 0.2rem solid var(--branco);
+    color: var(--branco);
     display: flex;
     font-size: 2rem;
     padding: 2rem;

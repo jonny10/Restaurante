@@ -8,7 +8,7 @@ que tenha uma borda em baixo de 0.2px solido e branco, que o texto seja alinhado
 e que tenha uma margem em baixo de 3rem*/
 .admin h2{
     font-size: 4rem;
-    border-bottom: 0.2rem solid white;
+    border-bottom: 0.2rem solid var(--branco);
     text-align: start;
     margin-bottom: 3rem;
 }
@@ -18,9 +18,9 @@ de 2px solido e branco arredondado em 10px com o espaçamento de 5px e que
  a letra tenha cor branca com umar margem a direita de 5px*/
 .admin a{
     text-decoration: none;
-    border: 0.2rem solid white;
+    border: 0.2rem solid var(--branco);
     padding: 0.5rem;
-    color: white;
+    color: var(--branco);
     border-radius: 10px;
     margin-right: 0.5rem;
 }
@@ -33,8 +33,8 @@ de 2px solido e branco arredondado em 10px com o espaçamento de 5px e que
 /*Definindo que os link quando o mouse está em cima mudem o fundo para branco
 e a letra para a cor preta*/
 .admin a:hover{
-    background-color: white;
-    color: black;
+    background-color: var(--branco);
+    color: var(--preto);
 }
 
 /*Definindo que a linha onde fica as informações do iten terá um display flexivel, com o
@@ -42,7 +42,7 @@ tamanho da fonte em 2rem com uma borda em baixo de 2px solido e branco, e uma ma
 .mostrar_item{
     display: flex;
     font-size: 2rem;
-    border-bottom: 0.2rem solid white;
+    border-bottom: 0.2rem solid var(--branco);
     margin-bottom: 2rem;
 }
 
@@ -72,9 +72,9 @@ e uma margem em baixo de 1rem */
 .editar button{
     height: 3rem;
     width: 10rem;
-    background-color: black;
-    border: 0.1rem solid white;
-    color: white;
+    background-color: var(--preto);
+    border: 0.1rem solid var(--branco);
+    color: var(--branco);
     border-radius: 5px;
     margin-bottom: 1rem;
 }
@@ -82,8 +82,8 @@ e uma margem em baixo de 1rem */
 /*Definindo que quando o mouse estiver em cima dos botões dos itens, ele alterem o fundo
 para branco e a letra para preta*/
 .editar button:hover{
-    background-color: white;
-    color: black;
+    background-color: var(--branco);
+    color: var(--preto);
 }
 
 /*Definindo que a divisão do formulario tenha uma margem em baixo de 1rem*/
@@ -94,12 +94,12 @@ para branco e a letra para preta*/
 /*Definindo que o input do formulario tenha um fundo transparent e letra branca*/
 .formCronograma input{
     background-color: transparent;
-    color: white;
+    color: var(--branco);
 }
 
 /*Definindo que o span/label dos input criado pelo bootstrap tenham um fundo transparente
 e letra branca*/
 .formCronograma span{
     background-color: transparent;
-    color: white;
+    color: var(--branco);
 }

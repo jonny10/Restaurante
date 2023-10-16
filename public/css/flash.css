@@ -1,10 +1,10 @@
 /*Definindo as propriedadaes do flash*/
 .flash{
-    background-color: #000000;
+    background-color: var(--preto);
     max-width: 70%;
     margin: 0 auto;
     text-align: center;
-    color: white;
+    color: var(--branco);
     border-width: 0.2rem;
     border-radius: 20px;
     margin-bottom: 2rem;
