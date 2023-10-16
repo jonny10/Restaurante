@@ -1,0 +1,108 @@
+<!--Criando uma divisão geral para o perfil-->
+<div class="center">
+    <!--Criando uma divisão para ser uma caixa e centraliza-lá na tela-->
+    <div class="box">
+        <!--Divisão para colocar o titulo na caixa-->
+        <div class="perfil">
+            <h2>Perfil</h2>
+        </div>
+        <!--Criando um divisão para as informações do perfil-->
+        <div class="perfil_infos">
+            <!--Criando agora uma sequencia de inputs e label para servir de visualização das informações do perfil
+            e também de formulário para que você possa alterar as inforamações se quiser-->
+            <form method="post" action="/alterar-perfil">
+                <!--em breve-->
+                <!--Criando uma linha para separar a visualizaçaõ das informações em duas colunas-->
+                <div class="row">
+                    <!--Na primeira coluna o login, o nome e o telefone do usuario-->
+                    {{#if user}}
+                    <div class="col-6">
+                        <label for="email" class="form-label">Login</label>
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{{user.dataValues.email}}">
+                        <div class="alerta_validacao" id="alertaEmail">
+                            <p>⚠ Insira um email válido ⚠</p>
+                        </div>
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" value="{{user.dataValues.nome}}">
+                        <div class="alerta_validacao" id="alertaNome">
+                            <p>⚠ O seu nome deve conter no minimo 2 caracteres e no máximo 50 ⚠</p>
+                        </div>
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="tel" class="form-control" name="telefone" id="telefone" minlength="14" maxlength="14" value="{{user.dataValues.telefone}}">
+                        <div class="alerta_validacao" id="alertaTelefone">
+                            <p>⚠ O telefone deve estar da seguinte forma (DDD) + 9 + número ⚠</p>
+                        </div>
+                    </div>
+                    <!--Na segunda coluna um botão para alterar a senha, o CEP e o complemento do usuario-->
+                    <div class="col-6">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" name="endereco" id="endereco" value="{{user.dataValues.endereco}}">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" class="form-control" name="cep" id="cep" value="{{user.dataValues.cep}}" required maxlength="9">
+                        <div class="alerta_validacao" id="alertaCep">
+                            <p>⚠ Insira um cep válido ⚠</p>
+                        </div>
+                        <label for="complemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" name="complemento" id="complemento" value="{{user.dataValues.complemento}}">
+                    </div>
+                    {{/if}}
+                </div>
+                <!--Botão para salvar as alterações realizadas nas informações do perfil-->
+                <button onclick="travarTela()" type="submit" class="btn btn-outline-light salvar" >Salvar</button>
+                <button type="button" class="btn btn-outline-light passAlterar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Alterar senha</button>
+                <button type="button" class="btn btn-outline-light deletar" data-bs-toggle="modal" data-bs-target="#deltarconta">Deletar minha conta</button>
+            </form>
+            <!-- Modal alterar senha-->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content pop">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="staticBackdropLabel">Alterar senha</h1>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/alterar-senha">
+                        <div class="mb-2">
+                            <label  style="font-size: 2rem;" for="senhaAnterior" class="form-label">Insira sua senha atual</label>
+                            <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="password" class="form-control" name="senhaAnterior" id="senhaAnterior">
+                        </div>
+                        <div class="mb-2">
+                            <label  style="font-size: 2rem;" for="senha" class="form-label">Insira sua nova senha</label>
+                            <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="password" class="form-control" name="novaSenha" id="senha">
+                            <div class="alerta_validacao" id="alertaSenha">
+                                <p>⚠ A senha deve ter no mínimo 8 caracteres, pelo menos 1 letra maiúscula e pelo menos 1 número ⚠</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer pop-buttons">
+                    <button type="button" class="btn btn-outline-light salvar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" data-bs-dismiss="modal" onclick="travarTela()" class="btn btn-outline-light passAlterar">Salvar</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Modal deletar conta-->
+            <div class="modal fade" id="deltarconta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content pop">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="staticBackdropLabel">Deletar conta</h1>
+                </div>
+                <div class="modal-body">
+                    <P>Tem certeza que deseja deletar a sua conta?</P>
+                </div>
+                <div class="modal-footer pop-buttons">
+                    <button type="button" class="btn btn-outline-light salvar" data-bs-dismiss="modal">Cancelar</button>
+                    <form method="post" action="/deletar-conta">
+                    <input style="display: none;" type="text" name="confirma" value="sim">
+                    <button type="submit" data-bs-dismiss="modal" onclick="travarTela()" class="btn btn-outline-light passAlterar">Sim</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/validar_cadastro.js"></script>

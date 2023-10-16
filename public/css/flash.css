@@ -1,0 +1,19 @@
+/*Definindo as propriedadaes do flash*/
+.flash{
+    background-color: #000000;
+    max-width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    border-width: 0.2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.flash p{
+    font-size: 3rem;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}

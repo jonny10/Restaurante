@@ -2,44 +2,62 @@
 <header>
     <!--Separando uma seção para o cabeçalho-->
     <section>
-        <div class="cabecalho">
+        <div class="cabecalho" id="cabecalho">
             <!-- Aqui será o topo com o logo, nome do restaurante, e um botão para logar e afins-->
             <div class="top">
                 <!--Divisão para o logo-->
                 <div class="logo">
-                    <a href="/"><img src="/img/257777998_440305677463704_2469486848277217983_n.jpg" alt="logomarca"></a>
+                    <a onclick="travarTela()" href="/"><img src="/img/257777998_440305677463704_2469486848277217983_n.jpg" alt="logomarca"></a>
                 </div>
                 <!--Divisão para o nome do restaurate-->
                 <div class="title">
-                    <a style="text-decoration-line: none; color: white;" href="/"><h1>La playa<br>bar</h1></a>
+                    <h1><a onclick="travarTela()" style="text-decoration-line: none; color: white;" href="/">La playa<br>bar</a></h1>
                 </div>
                 <!--Divisão para os botões-->
                 <div class="buttons d-flex">
-                    <a class="nav-link dropdown-toggle me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.5rem;">
-                        Olá Jonathan
+                    {{#if user}}
+                    <!--defininindo um dropdown do bootstrap com o nome do usuario-->
+                    <a class="caminhos nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Olá {{user.dataValues.nome}}
                     </a>
+                    <!--Uma lista com os links para páginas do site do dropdown do bootstrap-->
                     <ul class="dropdown-menu dropdown-menu-dark suspenso">
-                        <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-                        <li><a class="dropdown-item" href="/pedidos">Pedidos</a></li>
-                        <li><a class="dropdown-item" href="/admin">administrar</a></li>
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                        <!--Link para o perfil do usuario-->
+                        <li><a onclick="travarTela()" class="dropdown-item" href="/perfil"><p>Perfil</p></a></li>
+                        <!--Link para a página com os pedidos do usuario-->
+                        <li><a class="dropdown-item" href="/pedidos"><p>Pedidos</p></a></li>
+                        {{#if eAdminLocal}}
+                        <!--Link para a página de admin-->
+                        <li><a onclick="travarTela()" class="dropdown-item" href="/admin"><p>Administrar</p></a></li>
+                        {{else}}
+                        {{/if}}
+                        <!--Link que desloga o usuario-->
+                        <li><a onclick="travarTela()" class="dropdown-item" href="/deslogar"><p>Sair</p></a></li>
                     </ul>
-                    <a href="/login"><button>Entrar</button></a>
+                    {{else}}
+                    <!--Link para ir a página de login-->
+                    <a onclick="travarTela()" class="btnlogin" href="/login"><button>Entrar</button></a>
+                    {{/if}}
                 </div>
             </div>
             <!--Uma divisão para que tenha um guia abaixo das informações iniciais, para links que leva a outros lugares-->
             <div class="guia">
+                <!--Cada link terá sua propria divisão afins de estética no CSS-->
                 <div class="info">
-                    <a href="/informacoes">Informações</a>
+                    <!--Link para as informações do site-->
+                    <a onclick="travarTela()" href="/informacoes">Informações</a>
                 </div>
                 <div class="whats">
+                    <!--Link para o whatsapp-->
                     <a target="_blank" href="https://api.whatsapp.com/send?phone=5519992123580">Whatsapp</a>
                 </div>
                 <div class="insta">
+                    <!--Link para o instagram-->
                     <a target="_blank" href="https://www.instagram.com/laplaya_bar/">Instagram</a>
                 </div>
                 <div class="contratamos">
-                    <a href="/contratamos">Contratamos</a>
+                    <!--em breve-->
+                    <a onclick="travarTela()" href="/contratamos">Contratamos</a>
                 </div>
             </div>
         </div>

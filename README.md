@@ -32,3 +32,44 @@ CONSEGUIIIIIIIIII KRL POHA FDP DESGRAÇADO VIVA KRL, 3 dias nesse detalhezinho
 -21/09/23: Bom dia, bom dia
 
 -22/09/2023: Bom dia, hoje vou implementar mais algumas coisinhas nas páginas de admin
+
+-23/09/23: Bom dia, hoje vou instalar o multer para puxar fotos do campo input do tipo file, para pegar a foto do produto, bom agora que consegui finalizar o formulario de adição de produto, vou fazer a página de edição do produtos já existentes
+
+24/09/23: Hoje vou configurar o update do cronograma da parte de admin e documentar tudo, vou revisar e mudar algumas coisinhas
+
+25/09/23: hoje vou terminar de documentar e estudar como realizar a estrutura de cadastro e login, aproveitei e também organizei as rotas e viwes
+
+28/09/23: Boa tarde, hoje iniciei as configurações das sessões para montar o sistema de login, atento, verificar o porque o midleware esta rodando 10 vezes
+
+29/09/23: Boa tarde, hoje vou montar o sistema de controlar acesso
+
+- fonte do ola "nome" / aumentar caixa de dropdown✅
+- css do flash✅
+- pagina do perfil✅ / botao alterar senha✅ / formulario de alterar usuario✅
+- carregando varios home se clicado varias vezes✅
+- link clicavel do menu✅
+- verificar titulo do header nao centralizado verticalmente✅
+
+após isso...
+
+Validar TUDO ✅
+
+02/10/2023: Bom dia Bom dia, hoje vou resolver algumas coisinhas e validar todos os formulários e também buscar um pouco de erros e criar páginas para resolver questões
+
+login, caixa: lembrar de mim
+tela de carregamento✅
+
+03/10/2023: Hoje finalizei a validação dos formulários de cadastro e alteração do usuario
+
+verificar os caminhos fora da validação e criar as páginas de nao acesso✅
+
+04/10/2023: Hoje vou verificar os caminhos e criar as páginas de não acesso
+
+verificar porque o cadastro nao vai pra frente✅
+
+05/10/2023: Hoje vou travar a tela para carregar todas as páginas
+
+alterar fonte do acesso negado✅
+
+alterar a verificação para verificar o gmail igual✅
+campo do CEP foi formatado

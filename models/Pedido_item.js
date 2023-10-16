@@ -11,7 +11,7 @@ const Pedido_item = banco.define('pedidos_itens', {
     },
     pedidos_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: Pedido,
             key: 'id'
@@ -19,7 +19,7 @@ const Pedido_item = banco.define('pedidos_itens', {
     },
     item_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: Item,
             key: 'id'
@@ -27,16 +27,19 @@ const Pedido_item = banco.define('pedidos_itens', {
     },
     quantidade: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false,
+        defaultValue: 1
     },
     valor_item: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: true
+        allowNull: false
     },
     valor_total: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: true
+        allowNull: false
     }
 })
-Pedido_item.sync({force: true})
+Pedido.belongsToMany(Item, { through: Pedido_item, foreignKey: 'pedidos_id', uniqueKey: 'id' })
+Item.belongsToMany(Pedido, { through: Pedido_item, foreignKey: 'item_id', uniqueKey: 'id' })
+
 module.exports = Pedido_item

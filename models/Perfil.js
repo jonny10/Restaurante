@@ -1,17 +1,17 @@
 const DataTypes = require('sequelize')
 const banco = require("./conexao_bd")
 
-const Tipo = banco.define('tipo', {
+const Perfil = banco.define('perfil', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    tipo: {
+    perfil: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false
     }
 })
 
-module.exports = Tipo
+module.exports = Perfil

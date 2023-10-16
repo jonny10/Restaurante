@@ -35,7 +35,7 @@ body {
     width: 100%;
     height: 13%;
     top: 0%;
-    z-index: 10;
+    z-index: 3;
 }
 
 /*Definindo as caracteristicas do topo da página, como flex o dispplay e margem no topo e padding na parte de baixo,
@@ -74,11 +74,13 @@ definindo as cores como branco*/
 
 /*Centralizando o titulo e definindo o seu tamanho*/
 .title h1{
+    font-size: 100%;
     margin: auto;
     width: 100%;
-    font-size: 200%;
-    text-align: center;
     height: 100%;
+    font-size: 2em;
+    text-align: center;
+    height: auto;
 }
 
 
@@ -91,10 +93,15 @@ definindo as cores como branco*/
     align-items: center;
 }
 
+/*Definindo que o botão de login tenha altura de 45% disponivel*/
+.btnlogin{
+    height: 45%;
+}
+
 /*Defindo as propriedades dos botões*/
 .buttons button{
-    width: 11rem;
-    height: 3.5rem;
+    width: 15rem;
+    height: 100%;
     border-width: 3px;
     border-color: white;
     border-radius: 150px;
@@ -102,6 +109,36 @@ definindo as cores como branco*/
     color: white;
     box-shadow: none;
     border-style: solid;
+}
+
+/*Definindo as propriedades do link que abre o dropdown*/
+.caminhos {
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 200%;
+}
+
+/*Definindo que o dropdown do bootstrap tenha um fonte de 1.5rem,
+com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
+.suspenso{
+    width: 20rem;
+    background-color: #000000;
+    border: 0.3rem solid white;
+}
+
+/*Definindo que os links dentro do dropdown tenham a letra branca*/
+.suspenso a{
+    color: white;
+    font-size: 3rem;
+    padding: 2rem;
+    
+}
+
+.suspenso p{
+    border-bottom: 0.1rem solid rgb(173, 175, 47);
 }
 
 .buttons button:hover{
@@ -157,15 +194,4 @@ que seu tamanho é 100% e que seu texto ficará no centro*/
 /*Colocando que o bootstrap não passe do tamanho máximo*/
 .row{
     width: 100%;
-}
-
-.suspenso{
-    font-size: 1.5rem;
-    background-color: #000000;
-    border: 0.1rem solid white;
-    margin: 3rem
-}
-
-.suspenso a{
-    color: white;
 }

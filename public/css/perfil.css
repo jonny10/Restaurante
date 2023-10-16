@@ -1,8 +1,12 @@
+/*Definindo que a página perfil está com o display flexivel e com seus conteudos centralizado*/
 .center{
     display: flex;
     justify-content: center;
 }
 
+/*Definindo que a caixa do perfil tenha um tamanho de 80% da tela disponivel, e altura de 100% da div center
+que tenha uma borda de 2px solida e branca arredondada em 30px e um espaçamento de 3rem e sua fonte com
+tamanho de 3rem*/
 .box{
     width: 80%;
     height: 100%;
@@ -12,15 +16,20 @@
     font-size: 3rem;
 }
 
+/*Definindo que o titulo "perfil" tenha uma margem em baixo de 1.8rem*/
 .perfil {
     margin-bottom: 1.8rem
 }
 
+/*Definindo que o titulo tenha uma borda em baixo de 1px solido e dourado com uma fonte de tamanho 4rem*/
 .perfil h2{
     border-bottom: 0.1rem solid rgb(236, 233, 9);
     font-size: 4rem;
 }
 
+/*Definindo que os inputs do perfil que contém as informações do usuario tenham uma margem em baxio de 2rem
+uma altura de 3.5rem, uma fonte com tamanho de 2.5rem sendo ela arial, que a borda não seja arrredondada
+com o fundo preto, e uma borda de 1px solida e branca com a letra branca*/
 .perfil_infos input{
     margin-bottom: 2rem;
     height: 3.5rem;
@@ -32,15 +41,44 @@
     color: white
 }
 
+/*Definindo que assim que o input for clicado para preencher as informações, altere a borda para 2px de grossura
+e que o fundo e a letra continue o mesmo*/
 .perfil_infos input:focus{
     border: 0.2rem solid white;
     background-color: black;
     color: white;
-    box-shadow: 2rem yellow;
 }
 
-.perfil_infos button{
+/*Definindo que o botão de salvar as alterações tenha uma largura de 12rem, e uma altura de 4rem
+e com o tamanho da fonte de 2rem */
+.salvar{
     width: 12rem;
     height: 4rem;
     font-size: 2rem;
+}
+
+.passAlterar{
+    width: 15rem;
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.deletar{
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.pop{
+    background-color: #000000;
+    border: 0.1rem solid white;
+    color: white;
+    padding: 2rem;
+}
+
+.pop h1{
+    font-size: 3rem;
+}
+
+.pop-buttons{
+    border-top: none;
 }

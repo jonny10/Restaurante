@@ -1,5 +1,6 @@
 const DataTypes = require('sequelize')
 const banco = require("./conexao_bd")
+const Perfil = require("./Perfil")
 
 const Usuario = banco.define('usuario', {
     id: {
@@ -9,26 +10,43 @@ const Usuario = banco.define('usuario', {
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: true
+        allowNull: false
+    },
+    perfil_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        default: 1,
+        references: {
+            model: Perfil,
+            key: 'id'
+        }
+    },
+    endereco: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     cep: {
-        type: DataTypes.INTEGER(8)
+        type: DataTypes.STRING(9),
+        allowNull: false
     },
     complemento: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
     },
     telefone: {
-        type: DataTypes.STRING(11)
+        type: DataTypes.STRING(14),
+        allowNull: false
     },
     senha: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 })
+Usuario.belongsTo(Perfil, {foreignKey: 'perfil_id'})
 
 module.exports = Usuario
