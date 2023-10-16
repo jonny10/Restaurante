@@ -4,6 +4,7 @@ const Tamanho = require("./Tamanho")
 const Item = require("./Item")
 const Perfil = require("./Perfil")
 const Usuario = require("./Usuario")
+const Cronograma = require("./Cronograma")
 const { Op } = require("sequelize");
 
 //const pratos = Tipo.create({tipo: "Almoço"})
@@ -19,6 +20,19 @@ const { Op } = require("sequelize");
 //const tamanho2 = Tamanho.create({id: 2, tamanho: "M"})
 //const tamanho3 = Tamanho.create({id: 3, tamanho: "G"})
 //const padrao = Tamanho.create({id: 4, tamanho: "Padrão"})
+
+//perfil = Perfil.create({perfil: "Cliente"})
+//perfil = Perfil.create({perfil: "Admin"})
+
+/*cronograma = Cronograma.create({
+    segunda: "evento",
+    terca: "evento",
+    quarta: "evento",
+    quinta: "evento",
+    sexta: "evento",
+    sabado: "evento",
+})
+*/
 
 /*Item.update(
     {
@@ -44,16 +58,6 @@ const { Op } = require("sequelize");
         tipo_id: 2, 
         imagem_do_item: imageChocolate, 
         valor: 4.00
-    }
-)*/
-/*perfil = Perfil.create(
-    {
-        perfil: "Cliente"
-    }
-)*/
-/*perfil = Perfil.create(
-    {
-        perfil: "Admin"
     }
 )*/
 /*

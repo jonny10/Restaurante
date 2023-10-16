@@ -42,6 +42,4 @@ const Pedido_item = banco.define('pedidos_itens', {
 Pedido.belongsToMany(Item, { through: Pedido_item, foreignKey: 'pedidos_id', uniqueKey: 'id' })
 Item.belongsToMany(Pedido, { through: Pedido_item, foreignKey: 'item_id', uniqueKey: 'id' })
 
-Pedido_item.sync({alter: true})
-
 module.exports = Pedido_item
