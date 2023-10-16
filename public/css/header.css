@@ -1,0 +1,197 @@
+/*Definindo as propriedades gerais de tudo*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+/*Importando a fonte Kaushan*/
+@font-face {
+    font-family: Kaushan;
+    src: url(../font/KaushanScript-Regular.ttf)
+  }
+
+/*Definindo qual seria o taanho da fonte de acordo com o aparelho do usuario*/
+html {
+    font-size: 62.5%;
+}
+
+/*Definindo padrões gerais do corpo do site*/
+body {
+    font-family: Kaushan;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    background-color: #000000;
+    max-width: 1920px;
+    min-width: 320px;
+    width: 100%;
+}
+
+/*Definindo que o cabeçaljo ira fixo no topo com com a largura total da tela e 13% de altura segundo a tela*/
+.cabecalho{
+    position: fixed;
+    width: 100%;
+    height: 13%;
+    top: 0%;
+    z-index: 3;
+}
+
+/*Definindo as caracteristicas do topo da página, como flex o dispplay e margem no topo e padding na parte de baixo,
+definindo as cores como branco*/
+.top{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 0.2rem solid white;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+/*Dando uma margem de 20pixels a esquerda do logo*/
+.logo{
+    margin-left: 2rem;
+    width: 6%;
+}
+/*Definindo que a imagem vai ter o mesmo tamanho que o cabecalho */
+.logo img{
+    /*height: 60px*/
+    height: 100%;
+}
+
+/*Definindo o tamanho do titulo o máximo possivel, tirando o valor do logo e dos botoões*/
+.title{
+    width: calc(100% - 6% - 110px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/*Centralizando o titulo e definindo o seu tamanho*/
+.title h1{
+    font-size: 100%;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    text-align: center;
+    height: auto;
+}
+
+
+/*Alinhando os items dentro da divisão de butões e dando uma margem a direita de 20 pixels*/
+.buttons{
+    align-content: flex-end;
+    right: 0%;
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/*Definindo que o botão de login tenha altura de 45% disponivel*/
+.btnlogin{
+    height: 45%;
+}
+
+/*Defindo as propriedades dos botões*/
+.buttons button{
+    width: 15rem;
+    height: 100%;
+    border-width: 3px;
+    border-color: white;
+    border-radius: 150px;
+    background-color: transparent;
+    color: white;
+    box-shadow: none;
+    border-style: solid;
+}
+
+/*Definindo as propriedades do link que abre o dropdown*/
+.caminhos {
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 200%;
+}
+
+/*Definindo que o dropdown do bootstrap tenha um fonte de 1.5rem,
+com o fundo preto, uma borda de 1px solida e branca com uma margem de 3rem*/
+.suspenso{
+    width: 20rem;
+    background-color: #000000;
+    border: 0.3rem solid white;
+}
+
+/*Definindo que os links dentro do dropdown tenham a letra branca*/
+.suspenso a{
+    color: white;
+    font-size: 3rem;
+    padding: 2rem;
+    
+}
+
+.suspenso p{
+    border-bottom: 0.1rem solid rgb(173, 175, 47);
+}
+
+.buttons button:hover{
+    background-color: white;
+    color: black;
+}
+
+/*Definindo as propriedadaes da guia*/
+.guia{
+    background-color: #000000;
+    max-width: 70%;
+    height: 2.8rem;
+    margin: 0 auto;
+    display: flex;
+    border-bottom: 0.2rem solid white;
+    color: white;
+    border-left: 0.2rem solid white;
+    border-right: 0.2rem solid white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+/*Definindo que as Div's da guia terão uma borda branca na esquerda e que terá um quato do tamanho total
+do tamanho da guia, e que seu display é flex*/
+.guia div{
+    border-left: 0.2rem solid white;
+    width: calc(100%/4);
+    display: flex;
+}
+
+/*Definindo que a primeira guia não terá a borda da esquerda*/
+.guia div:first-child {
+    border-left: none;
+}
+
+/*Definindo que os links das Div's não terão a linha debaixo, o texto será branco, que a fonte terá 20pixels,
+que seu tamanho é 100% e que seu texto ficará no centro*/
+.guia div a{
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+/*Que o corpo tenha uma margem no topo de 13% da tela*/
+.corpo{
+    margin-top: 10%;
+    color: white;
+}
+
+/*Colocando que o bootstrap não passe do tamanho máximo*/
+.row{
+    width: 100%;
+}

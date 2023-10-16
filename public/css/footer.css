@@ -1,0 +1,29 @@
+/*Definindo que a divisão geral do footer tenha uma borda em cima de 2px solido e branco
+com a letra branca, display flexivel com a fonte de 2rem e espaçamento de 2rem
+e uma margem em cima de 5rem*/
+.footer{
+    border-top: 0.2rem solid white;
+    color: white;
+    display: flex;
+    font-size: 2rem;
+    padding: 2rem;
+    margin-top: 5rem;
+}
+
+/*Definindo que a fonte dos titulos das infos tenham um tamanho de 2.3rem*/
+.infos h4{
+    font-size: 2.3rem;
+}
+
+/*Definindo que a divisão dos créditos tenham uma margem em baixo de 3rem*/
+.creditos{
+    margin-bottom: 3rem;
+}
+
+/*Definindo que a divisão da miniatura com a logo do site tenha uma posição absoluta
+fique totalmente na direita e tenham uma margem a direita de 2.5rem*/
+.miniatura{
+    position: absolute;
+    right: 0px;
+    margin-right: 2.5rem;
+}
