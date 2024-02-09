@@ -9,6 +9,8 @@
     const flash = require('connect-flash')
     const passport = require("passport")
     require("./config/auth")(passport)
+    //helpers
+        const {separar} = require("./helpers/separarItens")
 // Configurações
     // Public
         app.use(express.static(path.join(__dirname, "public")))
@@ -27,6 +29,7 @@
             res.locals.error_msg = req.flash("error_msg")
             res.locals.error = req.flash("error")
             res.locals.user = req.user || null
+            res.locals.sacola = req.sacola || null
             next()
         })
         app.use((req, res, next) => {
@@ -41,7 +44,7 @@
             }else{
                 next()
             }
-        })
+        }) //?
     // Handlebars
         app.engine('handlebars', engine({
             defaultLayout: 'main',
@@ -55,8 +58,6 @@
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
 // Carregando models
-    const Item = require("./models/Item")
-    const Tamanho = require("./models/Tamanho")
     const Cronograma = require("./models/Cronograma")
 // Rotas
     //Home
@@ -65,60 +66,15 @@
     e se o item for do tipo almoço ele é criada um objeto com o nome no primeiro array e as 3 informações
     de cada tamanho daquele mesmo na segunda array, para que no html seja possivel alterar somente o tamanho
     para visualizar as demais informações do mesmo item*/
-        app.get("/", async (req, res) => {
-            pratos = {}
-            doces = []
-            salgados = []
-            lanches = []
-            porcoes = []
-            refri = []
-            cervejas = []
-            
-            const itens = await Item.findAll({include: Tamanho})
-            for (var i = 0; i < itens.length; i++) {
-                imagem = itens[i]['dataValues']['imagem_do_item']
-                itens[i]['dataValues']['imagem_do_item'] = 'data:image/png;base64,' + Buffer.from(imagem, 'binary').toString('base64')
-                tipo = itens[i]['dataValues']['tipo_id']
-                nome = itens[i]['dataValues']['titulo']
-                if (tipo == 1){
-                    infos = {
-                        titulo: nome.replace(/ /g, "-"),
-                    }
-                    if (!pratos[nome]) {
-                        pratos[nome] = {}
-                        pratos[nome]['infos'] = []
-                        pratos[nome]['infosTamanhos'] = []
-                        pratos[nome]['infos'].push(infos)
-                    }
-                    pratos[nome]['infosTamanhos'].push(itens[i])
-                }
-                if (tipo == 2){
-                    doces.push(itens[i])
-                }
-                if (tipo == 3){
-                    lanches.push(itens[i])
-                }
-                if (tipo == 4){
-                    salgados.push(itens[i])
-                }
-                if (tipo == 5){
-                    porcoes.push(itens[i])
-                }
-                if (tipo == 6){
-                    refri.push(itens[i])
-                }
-                if (tipo == 7){
-                    cervejas.push(itens[i])
-                }
-            }
+        app.get("/", separar, (req, res) => {
             res.render('home', {
-                almoco: pratos, 
-                doces: doces,
-                salgados: salgados,
-                lanches: lanches,
-                porcoes: porcoes,
-                refrigerantes: refri,
-                cervejas: cervejas
+                almoco: res.locals.pratos, 
+                doces: res.locals.doces,
+                salgados: res.locals.salgados,
+                lanches: res.locals.lanches,
+                porcoes: res.locals.porcoes,
+                refrigerantes: res.locals.refri,
+                cervejas: res.locals.cervejas
             })
         })
 

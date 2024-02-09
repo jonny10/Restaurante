@@ -103,7 +103,7 @@
                                     <p>R$ {{valor}}</p>
                                 </div>
                                 <div class="adicionar">
-                                    <button>Adicionar na sacola</button>
+                                    <button onclick="adicionar({{id}})">Adicionar na sacola</button>
                                 </div>
                             </div>
                             {{/each}}
@@ -280,6 +280,9 @@
             </div>
             <!--Sacola em desenvolvimento-->
             <div class="sacola">
+                {{#each sacola}}
+                    {{this}}
+                {{/each}}
                 <textarea>iirvbevihfiuvhfuiehvuhifvuiohdfvoui</textarea>
             </div>
             <!--Uma divisão para os botões da sacola-->
@@ -292,3 +295,4 @@
         </div>
     </div>
 </div>
+<script src="/js/adicionar_sacola.js"></script>
