@@ -58,6 +58,7 @@
     const Item = require("./models/Item")
     const Tamanho = require("./models/Tamanho")
     const Cronograma = require("./models/Cronograma")
+const { Console } = require("console")
 // Rotas
     //Home
     /*Uma rota inicial que busca no banco de dados todos os itens e verififica o tipo de cada item
@@ -122,8 +123,36 @@
             })
         })
 
+    //addbag
+    /*Rota para adicionar item a sacola*/
+        app.get("/addbag/:id", function(req, res){
+            Item.findOne({
+                where: {
+                    id: req.params.id
+                }
+            }).then((item) => {
+                if(app.locals.beg){
+                    app['locals']['beg'].push(item.dataValues)
+                }else{
+                    app.locals.beg = []
+                    app['locals']['beg'].push(item.dataValues)
+                }
+                res.redirect("/")
+            }).catch((err) => {
+                req.flash("error_msg", "Não foi possivel encontrar o item do banco de dados, tente novamente! " + err)
+                res.redirect("/")
+            })
+        })
+
+    //cleanbag
+    /*Rota para limpar a sacola*/
+        app.get("/cleanbag", function(req, res){
+            app.locals.beg = []
+            res.redirect("/")
+        })
+
     //Sacola
-    /*Rota para savola */
+    /*Rota para sacola */
         app.get("/sacola", function(req, res){
             res.sendfile()
         })

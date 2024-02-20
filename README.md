@@ -72,4 +72,8 @@ verificar porque o cadastro nao vai pra frente✅
 alterar fonte do acesso negado✅
 
 alterar a verificação para verificar o gmail igual✅
-campo do CEP foi formatado
+campo do CEP foi formatado✅
+
+19/02/2024: voltando hoje para realizar a função da sacola porém utilizando da mesma forma que já utilizado antes
+
+20/02/2024: Seguindo construindo a sacola do restaurante, consegui colocar os itens selecionados em uma variavel global para aparecer na sacola e também realizei um botão que limpa a sacola
