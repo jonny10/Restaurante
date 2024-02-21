@@ -292,8 +292,21 @@
             </div>
             <!--Sacola em desenvolvimento-->
             <div class="sacola">
+                <!--Definindo o titulo da sacola-->
+                <div class="titile_beg">
+                    <h1>Sacola</h1>
+                </div>
                 {{#each beg as | beg |}}
-                    <p>- {{beg.titulo}} R$ {{beg.valor}}</p>
+                    <div>
+                        <form action="/additem/{{beg.id}}" method="get">
+                            <p><button onclick="travarTela()" type="submit" style="height: 18px; width: 18px"><img src="/img/quantity-substract.svg" width="11px" height="11px" alt="mais"></button> 
+                        </form>
+                            {{beg.quantity}} 
+                        <form action="/subitem/{{beg.id}}" method="get">
+                            <button onclick="travarTela()" type="submit" style="height: 18px; width: 18px" ><img src="/img/quantity-add.svg" width="11px" height="11px" alt="menos"></button> 
+                        </form>  
+                            {{beg.titulo}} {{beg.tamanho.tamanho}} R$ {{beg.valor}}</p>
+                    </div>
                 {{else}}
                     <p>Aqui ficará os produtos que você adicionar!</p>
                 {{/each}}

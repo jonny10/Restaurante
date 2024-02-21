@@ -126,16 +126,31 @@ const { Console } = require("console")
     //addbag
     /*Rota para adicionar item a sacola*/
         app.get("/addbag/:id", function(req, res){
+            console.log("testando testando testando testando")
             Item.findOne({
+                include: Tamanho,
                 where: {
                     id: req.params.id
                 }
             }).then((item) => {
                 if(app.locals.beg){
-                    app['locals']['beg'].push(item.dataValues)
+                    quantity_item = Object.keys(app['locals']['beg'])
+                    var cont = 1
+                    for (var i in app['locals']['beg']) {
+                        if(app['locals']['beg'][i]['id'] === item['dataValues']['id']){
+                            app['locals']['beg'][i]['quantity'] = app['locals']['beg'][i]['quantity'] + 1
+                            break
+                        }
+                        if(cont == quantity_item.length){
+                            item['dataValues']['quantity'] = 1
+                            app['locals']['beg'][item.dataValues.id] = item.dataValues
+                        }
+                        cont++
+                    }
                 }else{
-                    app.locals.beg = []
-                    app['locals']['beg'].push(item.dataValues)
+                    item['dataValues']['quantity'] = 1
+                    app.locals.beg = {}
+                    app['locals']['beg'][item.dataValues.id] = item.dataValues
                 }
                 res.redirect("/")
             }).catch((err) => {
@@ -147,8 +162,42 @@ const { Console } = require("console")
     //cleanbag
     /*Rota para limpar a sacola*/
         app.get("/cleanbag", function(req, res){
-            app.locals.beg = []
-            res.redirect("/")
+            try{
+                app.locals.beg = []
+                res.redirect("/")
+            } catch (error) {
+                req.flash("error_msg", "Não foi possivel limpar a sacola, tente novamente! " + error)
+                res.redirect("/")
+            }
+        })
+    
+    //additem
+    /*Rota para aumentar a quantidade do item na sacola*/
+        app.get("/additem/:id", function(req, res){
+            try {
+                id = req.params.id
+                app['locals']['beg'][id]['quantity']++
+                res.redirect("/")
+            } catch (error) {
+                req.flash("error_msg", "Não aumentar a quantidade do item, tente novamente! " + error)
+                res.redirect("/")
+            } 
+        })
+
+    //subitem
+    /*Rota para subtrair a quantidade do item na sacola*/
+        app.get("/subitem/:id", function(req, res){
+            try {
+                id = req.params.id
+                app['locals']['beg'][id]['quantity']--
+                if(app['locals']['beg'][id]['quantity'] == 0){
+                    delete app['locals']['beg'][id]
+                }
+                res.redirect("/")
+            } catch (error) {
+                req.flash("error_msg", "Não aumentar a quantidade do item, tente novamente! " + error)
+                res.redirect("/")
+            } 
         })
 
     //Sacola
