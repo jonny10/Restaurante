@@ -33,7 +33,7 @@
                     <!--Criando uma classe para que eu consiga no javascript esconder e mostrar somente as classes com input selecionado-->
                     <div class="desc  classe_infos_{{titulo.titulo}} tamanho{{infos.tamanho.tamanho}} infos{{titulo.titulo}}_{{infos.tamanho.tamanho}}">
                     {{/each}}
-                        <!--Em breve-->
+                        <!--formulário para inserir esse item na sacola-->
                         <form action="/addbag/{{infos.id}}" method="get">
                         <!--A descrição do item-->
                         <div class="descricao">
@@ -43,7 +43,7 @@
                         <div class="valor">
                             <p>R$ {{infos.valor}}</p>
                         </div>
-                        <!--Em breve-->
+                        <!--botão para enviar o formulário de adicionar a sacola-->
                         <div class="adicionar">
                             <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                         </div>
@@ -89,6 +89,7 @@
                             </div>
                             <!--Usando novamente a formatação para apresentar o item do banco de dados-->
                             {{#each doces}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -103,6 +104,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar">
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -121,6 +123,7 @@
                             </div>
                             <!--Usando novamente a formatação para apresentar o item do banco de dados-->
                             {{#each salgados}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -135,6 +138,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar" >
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -156,6 +160,7 @@
                                 <h1>Lanches</h1>
                             </div>
                             {{#each lanches}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -170,6 +175,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar">
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -184,6 +190,7 @@
                                 <h1>Porções<h1></h1>
                             </div>
                             {{#each porcoes}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -198,6 +205,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar">
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -217,6 +225,7 @@
                                 <h1>Refrigerante/Suco</h1>
                             </div>
                             {{#each refrigerantes}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -231,6 +240,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar">
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -245,6 +255,7 @@
                                 <h1>Cervejas<h1></h1>
                             </div>
                             {{#each cervejas}}
+                            <!--formulário para inserir esse item na sacola-->
                             <form action="/addbag/{{id}}" method="get">
                             <div class="item">
                                 <div class="imagem">
@@ -259,6 +270,7 @@
                                 <div class="valor">
                                     <p>R$ {{valor}}</p>
                                 </div>
+                                <!--botão para enviar o formulário de adicionar a sacola-->
                                 <div class="adicionar">
                                     <button onclick="travarTela()" type="submit">Adicionar na sacola</button>
                                 </div>
@@ -296,27 +308,52 @@
                 <div class="titile_beg">
                     <h1>Sacola</h1>
                 </div>
+                <!--Inserindo a sacola-->
                 {{#each beg as | beg |}}
                     <div>
-                        <form action="/additem/{{beg.id}}" method="get">
-                            <p><button onclick="travarTela()" type="submit" style="height: 18px; width: 18px"><img src="/img/quantity-substract.svg" width="11px" height="11px" alt="mais"></button> 
-                        </form>
-                            {{beg.quantity}} 
-                        <form action="/subitem/{{beg.id}}" method="get">
-                            <button onclick="travarTela()" type="submit" style="height: 18px; width: 18px" ><img src="/img/quantity-add.svg" width="11px" height="11px" alt="menos"></button> 
-                        </form>  
-                            {{beg.titulo}} {{beg.tamanho.tamanho}} R$ {{beg.valor}}</p>
+                        <div class="itens">
+                            <!--Quantidade do item-->
+                            <div class="item_qntd info_item">
+                                <!--Formulário para aumentar a quantidade do item na sacola-->
+                                <form action="/subitem/{{beg.id}}" method="get">
+                                    <!--botão para executar o fomulário de aumentar quantidade-->
+                                    <button onclick="travarTela()" type="submit"><img src="/img/quantity-substract.svg" width="18px" height="15px" alt="menos"></button> 
+                                </form>
+                                <div class="quantity">
+                                    {{beg.quantity}}
+                                </div>
+                                <!--Formulário para subtrair a quantidade do item na sacola-->
+                                <form action="/additem/{{beg.id}}" method="get">
+                                    <!--botão para executar o fomulário de subtrair quantidade-->
+                                    <button onclick="travarTela()" type="submit"><img src="/img/quantity-add.svg" width="18px" height="15px" alt="mais"></button> 
+                                </form>
+                            </div>
+                            <!--Titulo do item-->
+                            <div class="item_title info_item">
+                                {{beg.titulo}} 
+                            </div>
+                            <!--Tamanho do item-->
+                            <div class="item_size info_item">
+                                {{beg.tamanho.tamanho}} 
+                            </div>
+                            <!--Valor do item-->
+                            <div class="item_price info_item">
+                                R$ {{beg.valor}}
+                            </div>
+                        </div>
                     </div>
                 {{else}}
+                    <!--O que aparece caso não há nehum item na sacola-->
                     <p>Aqui ficará os produtos que você adicionar!</p>
                 {{/each}}
             </div>
+            <!--Formulário para limpar a sacola e retirar todos os itens dela de uma vez-->
             <form id="cleanbag" action="/cleanbag" method="get"></form>
             <!--Uma divisão para os botões da sacola-->
             <div class="solicitar">
                 <!--Botão para pedir os itens da sacola// em desenvolvimento-->
                 <button>Pedir</button>
-                <!--Botão para limpar os itens da sacola// em desenvolvimento-->
+                <!--Botão para limpar os itens da sacola, ou seja que enviará o formulário cleanbag-->
                 <button onclick="travarTela()" form="cleanbag" type="submit">Limpar</button>
             </div>
         </div>

@@ -164,3 +164,56 @@ dependendo do javascript*/
 .ativo {
     display: block;
 }
+
+
+.itens {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.info_item {
+    display: flex;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.item_title {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.info_item:last-child {
+    margin-right: 0;
+    margin-left: auto;
+    padding: 0;
+}
+
+.item_qntd {
+    margin: auto 0;
+    padding: 0;
+    width: 6rem;
+    height: 3rem;
+    border: 0.2rem solid var(--branco);
+    border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_qntd button{
+    background-color: transparent;
+    border: none;
+    width: 1.9rem;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.quantity{
+    margin: 0 0.5rem
+}
+
+.item_pricev {
+    margin-right: 0;
+    padding: 0;
+}

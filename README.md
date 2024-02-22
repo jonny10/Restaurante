@@ -79,3 +79,6 @@ campo do CEP foi formatado✅
 20/02/2024: Seguindo construindo a sacola do restaurante, consegui colocar os itens selecionados em uma variavel global para aparecer na sacola e também realizei um botão que limpa a sacola
 
 21/02/2024: hoje estarei melhorando a parte estética e atribuindo alguns atributos a mais para validar melhor a sacola
+
+22/02/2024: agora que terminei o back-end da sacola vou documentar e estilizar ela
+amanhã farei o scroll e o input no número da quantidade

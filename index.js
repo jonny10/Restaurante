@@ -124,7 +124,11 @@ const { Console } = require("console")
         })
 
     //addbag
-    /*Rota para adicionar item a sacola*/
+    /*Rota para adicionar item a sacola, onde ele realizar uma busca do item no banco de dados e após encontra-lo
+    verifica se há algum valor no variavel local beg, caso não tenha ele cria um objeto e inseri o item com a quantidade 1
+    e caso já tenha algum valor nessa variavel ele verificar se dentro desse objeto há o item verificando o id do item do banco de dados dentro
+    do objeto e caso já tenha esse item, ele adiciona mais 1 a quantidade, e caso não tenha ele define o item com a quantidade 1 e adiciona a sacola
+    e após isso redireciona a página inicial novamente*/
         app.get("/addbag/:id", function(req, res){
             console.log("testando testando testando testando")
             Item.findOne({
@@ -133,19 +137,13 @@ const { Console } = require("console")
                     id: req.params.id
                 }
             }).then((item) => {
+                id_do_item = item['dataValues']['id']
                 if(app.locals.beg){
-                    quantity_item = Object.keys(app['locals']['beg'])
-                    var cont = 1
-                    for (var i in app['locals']['beg']) {
-                        if(app['locals']['beg'][i]['id'] === item['dataValues']['id']){
-                            app['locals']['beg'][i]['quantity'] = app['locals']['beg'][i]['quantity'] + 1
-                            break
-                        }
-                        if(cont == quantity_item.length){
-                            item['dataValues']['quantity'] = 1
-                            app['locals']['beg'][item.dataValues.id] = item.dataValues
-                        }
-                        cont++
+                    if(app['locals']['beg'][id_do_item]){
+                        app['locals']['beg'][id_do_item]['quantity']++
+                    }else{
+                        item['dataValues']['quantity'] = 1
+                        app['locals']['beg'][item.dataValues.id] = item.dataValues
                     }
                 }else{
                     item['dataValues']['quantity'] = 1
@@ -160,10 +158,11 @@ const { Console } = require("console")
         })
 
     //cleanbag
-    /*Rota para limpar a sacola*/
+    /*Rota para limpar a sacola, ele apenas define a variavel local beg como um objeto vazio ou retorna um erro caso não consiga,
+    e redireciona a tela inicial*/
         app.get("/cleanbag", function(req, res){
             try{
-                app.locals.beg = []
+                app.locals.beg = {}
                 res.redirect("/")
             } catch (error) {
                 req.flash("error_msg", "Não foi possivel limpar a sacola, tente novamente! " + error)
@@ -172,7 +171,8 @@ const { Console } = require("console")
         })
     
     //additem
-    /*Rota para aumentar a quantidade do item na sacola*/
+    /*Rota para aumentar a quantidade do item na sacola, apenas aumentando mais 1 na quantidade do item em espécifico
+    ou retorna um erro caso não consiga e redireciona a tela incial*/
         app.get("/additem/:id", function(req, res){
             try {
                 id = req.params.id
@@ -185,7 +185,9 @@ const { Console } = require("console")
         })
 
     //subitem
-    /*Rota para subtrair a quantidade do item na sacola*/
+    /*Rota para subtrair a quantidade do item na sacola, apenas subtrai mais 1 na quantidade do item em espécifico
+    e caso a quantidade do item especifico seja igual a 0, é deletado essa propriedade(item) do objeto, caso ela não consiga executar
+    ele retorna um erro caso não consiga e redireciona a tela incial*/
         app.get("/subitem/:id", function(req, res){
             try {
                 id = req.params.id
@@ -215,7 +217,6 @@ const { Console } = require("console")
                 let erro = "não foi possivel carregar o cronograma " + err
                 res.render("informacoes", {cronograma: erro})
             })
-            
         })
 
    //Contratamos 
