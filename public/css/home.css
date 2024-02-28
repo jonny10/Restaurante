@@ -169,6 +169,7 @@ dependendo do javascript*/
 .itens {
     display: flex;
     margin-bottom: 2rem;
+    scroll-snap-align: start;
 }
 
 .info_item {
@@ -183,7 +184,7 @@ dependendo do javascript*/
 }
 
 .info_item:last-child {
-    margin-right: 0;
+    margin-right: 0.5rem;
     margin-left: auto;
     padding: 0;
 }
@@ -213,7 +214,19 @@ dependendo do javascript*/
     margin: 0 0.5rem
 }
 
-.item_pricev {
-    margin-right: 0;
-    padding: 0;
+  
+.sections_itens {
+    scroll-snap-align: center;
+}
+
+#divItens{
+    max-height: 15rem;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+   }
+
+
+.enough_itens {
+    font-size: 3rem;
+    text-align: center;
 }

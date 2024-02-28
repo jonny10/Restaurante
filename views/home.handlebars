@@ -8,7 +8,7 @@
             <h1>Pratos de hoje</h1>
         </div>
         <!--Definindo uma coluna para os itens-->
-        <div class="row" id="almoco">
+        <div class="row sections_itens" id="almoco">
             <!--Organizando em uma divisão o grupo de itens-->
             <div class="pratos">
                 <!--um each que traz as variaveis do back-end em loop-->
@@ -74,7 +74,7 @@
             <!--Separando os demais items do almoço pois teão uma formatação diferente de duas colunas-->
             <div class="items">
                 <!--Definindo uma coluna para separar dois tipos de itens-->
-                <div class="row" id="doces">
+                <div class="row sections_itens" id="doces">
                     <!--Colocando um titulo geral para esse grupo de itens-->
                     <div class="title_item" >
                         <h1>Doces</h1>
@@ -150,7 +150,7 @@
                 </div>
                 <!--Repetindo os mesmos códigos para colocar mais dois grupos e 4 tipos de iten
                 sendo eles (lanches e bebidas), lanches, porcões, refrigerantes/suco, Cervejas-->
-                <div class="row" id="lanches">
+                <div class="row sections_itens" id="lanches">
                     <div class="title_item">
                         <h1>Lanches</h1>
                     </div>
@@ -215,7 +215,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="bebidas">
+                <div class="row sections_itens" id="bebidas">
                     <div class="title_item" >
                         <h1>Bebidas</h1>
                     </div>
@@ -308,10 +308,10 @@
                 <div class="titile_beg">
                     <h1>Sacola</h1>
                 </div>
-                <!--Inserindo a sacola-->
-                {{#each beg as | beg |}}
-                    <div>
-                        <div class="itens">
+                <div id="divItens">
+                    <!--Inserindo a sacola-->
+                    {{#each beg as | beg |}}
+                        <div class="itens" >
                             <!--Quantidade do item-->
                             <div class="item_qntd info_item">
                                 <!--Formulário para aumentar a quantidade do item na sacola-->
@@ -341,11 +341,13 @@
                                 R$ {{beg.valor}}
                             </div>
                         </div>
-                    </div>
-                {{else}}
-                    <!--O que aparece caso não há nehum item na sacola-->
-                    <p>Aqui ficará os produtos que você adicionar!</p>
-                {{/each}}
+                    {{else}}
+                        <!--O que aparece caso não há nehum item na sacola-->
+                        <div class="enough_itens">
+                            <p>Aqui ficará os produtos que você adicionar!</p>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
             <!--Formulário para limpar a sacola e retirar todos os itens dela de uma vez-->
             <form id="cleanbag" action="/cleanbag" method="get"></form>
