@@ -164,3 +164,78 @@ dependendo do javascript*/
 .ativo {
     display: block;
 }
+
+/*Definindo que a div que guarda os itens tenha no máximo 150 pixels de altura e um
+scroll na altura assim que o conteúdo dessa div passe de 150 pixels e com o snap do scroll
+definido como y mandatory*/
+#divItens {
+    max-height: 15rem;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+/*Definindo que a div quando não há itens com fonte de 30 pixels e com o texto alinhado no centro*/
+.enough_itens {
+    font-size: 3rem;
+    text-align: center;
+}
+
+/*Definindo que as informações dos itens fique em linha com uma margem de 20 pixels e que o scroll fique colado no inicio da rolagem*/
+.itens {
+    display: flex;
+    margin-bottom: 2rem;
+    scroll-snap-align: start;
+}
+
+/*Definindo que a informação do item fique em linha com uma fonte de 16 pixels com o texto centralizado no meio*/
+.info_item {
+    display: flex;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+/*Definindo que o titulo do item tenha uma margem de 10 pixels a direita e esquerda*/
+.item_title {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/*Definindo que a última informação do item(sendo ele o valor) tenha uma margem a direita de 5 pixels
+e uma margem automatica a esquerda e nenhum espaçamento*/
+.info_item:last-child {
+    margin-right: 0.5rem;
+    margin-left: auto;
+    padding: 0;
+}
+
+/*Definindo que a div onde guarda a quantidade e os botões de aumentar e diminuir a quantidade
+não tenha margem e espaçamento com uma largura de 60 pixels e 30 pixels de altura com uma borda de
+2 pixels solida branca com um arredondamento de 20 pixels com o texto e itens alinhados ao centro*/
+.item_qntd {
+    margin: auto 0;
+    padding: 0;
+    width: 6rem;
+    height: 3rem;
+    border: 0.2rem solid var(--branco);
+    border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Definindo que os botões que aumenta e diminui a quantidade do item tenha o fundo transparente
+e nehuma borda com uma largura de 19 pixels com o seus conteúdos alinhados ao centro*/
+.item_qntd button{
+    background-color: transparent;
+    border: none;
+    width: 1.9rem;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/*Definindo que o texto com a quantidade do item tenha 0 de margin em cima e em baixo
+e 5 pixels de margem na esquerda e direita*/
+.quantity{
+    margin: 0 0.5rem
+}

@@ -72,4 +72,17 @@ verificar porque o cadastro nao vai pra frente✅
 alterar fonte do acesso negado✅
 
 alterar a verificação para verificar o gmail igual✅
-campo do CEP foi formatado
+campo do CEP foi formatado✅
+
+19/02/2024: voltando hoje para realizar a função da sacola porém utilizando da mesma forma que já utilizado antes
+
+20/02/2024: Seguindo construindo a sacola do restaurante, consegui colocar os itens selecionados em uma variavel global para aparecer na sacola e também realizei um botão que limpa a sacola
+
+21/02/2024: hoje estarei melhorando a parte estética e atribuindo alguns atributos a mais para validar melhor a sacola
+
+22/02/2024: agora que terminei o back-end da sacola vou documentar e estilizar ela
+amanhã farei o scroll e o input no número da quantidade
+
+28/09/2024: hoje colocarei o scroll no input e outras coisas
+
+01/03/2024: hoje vou documentar as ultimas alterações da sacola e começar o código da página de compra
