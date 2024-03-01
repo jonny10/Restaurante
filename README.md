@@ -83,5 +83,6 @@ campo do CEP foi formatado✅
 22/02/2024: agora que terminei o back-end da sacola vou documentar e estilizar ela
 amanhã farei o scroll e o input no número da quantidade
 
-
 28/09/2024: hoje colocarei o scroll no input e outras coisas
+
+01/03/2024: hoje vou documentar as ultimas alterações da sacola e começar o código da página de compra
