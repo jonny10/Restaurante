@@ -128,6 +128,11 @@ e quando deslizado para baixo fique fixo na tela*/
     display: flex;
 }
 
+.solicitar a{
+    text-decoration: none;
+    color: var(--branco);
+}
+
 /*Definindo que o ultimo botão da divisão tenha uma margem na esquerda
 com o tamnho total disponivel - 150px*/
 .solicitar button:last-child{

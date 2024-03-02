@@ -36,7 +36,7 @@ const {verificarSenha} = require("../helpers/verificar")
                 bcrypt.hash(cadastrar.senha, salt, function(err, hash) {
                     if(err){
                         req.flash("error_msg", "Não foi possivel realizar o hash na senha")
-                        res.redirect("/cadastro")
+                        res.redirect("/usuario/cadastro")
                     }else{
                         cadastrar.senha = hash
                         Usuario.findOne({
@@ -47,7 +47,7 @@ const {verificarSenha} = require("../helpers/verificar")
                             (usuario) => {
                                 if(usuario){
                                     req.flash('error_msg', "Já existe uma conta com esse email, por favor utilize outro email!")
-                                    res.redirect('/cadastro')
+                                    res.redirect('/usuario/cadastro')
                                 }else{
                                     cadastrar.save().then(
                                         (usuario) => {
@@ -65,7 +65,7 @@ const {verificarSenha} = require("../helpers/verificar")
                                     ).catch(
                                         (erro) => {
                                             req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! ")
-                                            res.redirect('/cadastro')
+                                            res.redirect('/usuario/cadastro')
                                         }
                                     )
                                 }
@@ -73,7 +73,7 @@ const {verificarSenha} = require("../helpers/verificar")
                         ).catch(
                             (err) => {
                                 req.flash('error_msg', "Falha ao inserir suas informações em nosso banco de dados, tente novamente! ")
-                                res.redirect('/cadastro')
+                                res.redirect('/usuario/cadastro')
                             }
                         )
                     }
@@ -81,7 +81,7 @@ const {verificarSenha} = require("../helpers/verificar")
             })
         }else{
             req.flash("error_msg", verificar.erro)
-            res.redirect('/cadastro')
+            res.redirect('/usuario/cadastro')
         }
     })
 
@@ -95,7 +95,7 @@ const {verificarSenha} = require("../helpers/verificar")
 /*Rota para logar o usuario no site*/
 router.post("/realizar-login", 
     passport.authenticate("local", {
-        failureRedirect: "/login",
+        failureRedirect: "/usuario/login",
         failureFlash: true
     }), (req, res) => {
         req.flash('success_msg', "Logado com sucesso")
@@ -123,12 +123,12 @@ router.post("/realizar-login",
                 req.user.dataValues.complemento == req.body.complemento
             ){
                 req.flash("error_msg", "Nehuma informação foi alterada")
-                res.redirect('/perfil')
+                res.redirect('/usuario/perfil')
             }else{
                 Usuario.findOne({where:{email: req.body.email}}).then((usuario) => {
                     if(usuario){
                         req.flash('error_msg', "Já existe uma conta com esse email, por favor utilize outro email!")
-                        res.redirect('/perfil')
+                        res.redirect('/usuario/perfil')
                     }else{
                         Usuario.update(
                             {
@@ -146,10 +146,10 @@ router.post("/realizar-login",
                             }
                         ).then(() => {
                             req.flash("success_msg", "Informações do perfil alteradas com sucesso!")
-                            res.redirect('/perfil')
+                            res.redirect('/usuario/perfil')
                         }).catch((err) => {
                             req.flash("error_msg", "Não foi possivel alterar as informações do perfil no banco de dados, tente novamente! "+err)
-                            res.redirect('/perfil')
+                            res.redirect('/usuario/perfil')
                         })
                     }
                 }).catch((err) => {
@@ -158,7 +158,7 @@ router.post("/realizar-login",
             }
         }else{
             req.flash("error_msg", verificar.erro)
-            res.redirect('/perfil')
+            res.redirect('/usuario/perfil')
         }
     })
 
@@ -174,7 +174,7 @@ router.post("/realizar-login",
                         bcrypt.hash(req.body.novaSenha, salt, function(err, hash) {
                             if(err){
                                 req.flash("error_msg", "Não foi possivel alterar a senha, houve um erro, tente novamente")
-                                res.redirect('/perfil')
+                                res.redirect('/usuario/perfil')
                             }else{
                                 let senha = hash
                                 Usuario.update(
@@ -188,22 +188,22 @@ router.post("/realizar-login",
                                     }
                                 ).then(() => {
                                     req.flash("success_msg", "Senha alterada com sucesso")
-                                    res.redirect('/perfil')
+                                    res.redirect('/usuario/perfil')
                                 }).catch((err) => {
                                     req.flash("error_msg", "Não foi possivel alterar a senha, houve um erro, tente novamente")
-                                    res.redirect('/perfil')
+                                    res.redirect('/usuario/perfil')
                                 })
                             }
                         })
                     })
                 }else{
                     req.flash("error_msg", "Senha atual incorreta")
-                    res.redirect('/perfil')
+                    res.redirect('/usuario/perfil')
                 }
             })
         }else{
             req.flash("error_msg", senhaValida.erro)
-            res.redirect('/perfil')
+            res.redirect('/usuario/perfil')
         }
     })
 
@@ -219,7 +219,7 @@ router.post("/realizar-login",
         req.logout((err) => {
             if(err){
                 req.flash("error_msg", "Não foi possivel deslogar "+ err)
-                res.redirect('/perfil')
+                res.redirect('/usuario/perfil')
             }
             req.flash('success_msg', "Deslogado com sucesso")
             res.redirect("/")
@@ -245,7 +245,7 @@ router.post("/realizar-login",
                 res.redirect("/")
             }).catch((err) => {
                 req.flash("error_msg", "Não foi possivel deltar a conta, tente novamente "+ err)
-                res.redirect('/perfil')
+                res.redirect('/usuario/perfil')
             })
         }
     })

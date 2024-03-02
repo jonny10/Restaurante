@@ -23,20 +23,20 @@
                     <!--Uma lista com os links para páginas do site do dropdown do bootstrap-->
                     <ul class="dropdown-menu dropdown-menu-dark suspenso">
                         <!--Link para o perfil do usuario-->
-                        <li><a onclick="travarTela()" class="dropdown-item" href="/perfil"><p>Perfil</p></a></li>
+                        <li><a onclick="travarTela()" class="dropdown-item" href="/usuario/perfil"><p>Perfil</p></a></li>
                         <!--Link para a página com os pedidos do usuario-->
-                        <li><a class="dropdown-item" href="/pedidos"><p>Pedidos</p></a></li>
+                        <li><a class="dropdown-item" href="/usuario/pedidos"><p>Pedidos</p></a></li>
                         {{#if eAdminLocal}}
                         <!--Link para a página de admin-->
                         <li><a onclick="travarTela()" class="dropdown-item" href="/admin"><p>Administrar</p></a></li>
                         {{else}}
                         {{/if}}
                         <!--Link que desloga o usuario-->
-                        <li><a onclick="travarTela()" class="dropdown-item" href="/deslogar"><p>Sair</p></a></li>
+                        <li><a onclick="travarTela()" class="dropdown-item" href="/usuario/deslogar"><p>Sair</p></a></li>
                     </ul>
                     {{else}}
                     <!--Link para ir a página de login-->
-                    <a onclick="travarTela()" class="btnlogin" href="/login"><button>Entrar</button></a>
+                    <a onclick="travarTela()" class="btnlogin" href="/usuario/login"><button>Entrar</button></a>
                     {{/if}}
                 </div>
             </div>

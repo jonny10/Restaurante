@@ -1,0 +1,54 @@
+.title-beg h1{
+    text-align: center;
+    font-size: 7rem;
+}
+
+a{
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.receipt {
+    width: 80%;
+    height: 100%;
+    margin: 1rem auto;
+    border: 0.8rem solid var(--branco);
+    border-radius: 30px;
+    padding: 3rem;
+    font-size: 3rem;
+}
+
+.first-line, .second-line, .third-line{
+    display: flex;
+}
+.first-line div:last-child, .second-line div:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+.first-line, .second-line {
+    margin-bottom: 5rem;
+}
+
+.payment h2{
+    text-align: center;
+}
+
+.order_itens {
+    display: flex;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.order_itens div:last-child{
+    margin-left: 1rem;
+}
+
+.request{
+    margin: auto;
+    text-align: center;
+    margin-right: 15%;
+}
+
+.address, .replace, .order h2, .payment h2, .price, .request{
+    font-size: 5rem;
+}

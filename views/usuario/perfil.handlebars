@@ -10,7 +10,7 @@
         <div class="perfil_infos">
             <!--Criando agora uma sequencia de inputs e label para servir de visualização das informações do perfil
             e também de formulário para que você possa alterar as inforamações se quiser-->
-            <form method="post" action="/alterar-perfil">
+            <form method="post" action="/usuario/alterar-perfil">
                 <!--em breve-->
                 <!--Criando uma linha para separar a visualizaçaõ das informações em duas colunas-->
                 <div class="row">
@@ -60,7 +60,7 @@
                     <h1 class="modal-title" id="staticBackdropLabel">Alterar senha</h1>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/alterar-senha">
+                    <form method="post" action="/usuario/alterar-senha">
                         <div class="mb-2">
                             <label  style="font-size: 2rem;" for="senhaAnterior" class="form-label">Insira sua senha atual</label>
                             <input style="font-size: 2rem; font-family: Arial, Helvetica, sans-serif;" type="password" class="form-control" name="senhaAnterior" id="senhaAnterior">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="modal-footer pop-buttons">
                     <button type="button" class="btn btn-outline-light salvar" data-bs-dismiss="modal">Cancelar</button>
-                    <form method="post" action="/deletar-conta">
+                    <form method="post" action="/usuario/deletar-conta">
                     <input style="display: none;" type="text" name="confirma" value="sim">
                     <button type="submit" data-bs-dismiss="modal" onclick="travarTela()" class="btn btn-outline-light passAlterar">Sim</button>
                     </form>

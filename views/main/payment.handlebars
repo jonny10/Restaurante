@@ -1,0 +1,67 @@
+<div>
+    <div class="title-beg">
+        <h1>Sacola</h1>
+    </div>
+    <div class="receipt">
+        <div class="first-line">
+            <div class="info_delivery">
+                <div class="address">
+                    {{#with user.dataValues as | user |}}
+                        Entrega em: {{user.endereco}}
+                    {{/with}}
+                </div>
+                <div class="time_delivery">
+                    entrga em x minutos
+                </div>
+            </div>
+            <div class="replace">
+                <a href="/">Trocar</a>
+            </div>
+        </div>
+        <div class="second-line">
+            <div class="order">
+                <h2>Pedido</h2>
+                {{#each beg as | beg |}}
+                    <div class="order_itens" >
+                        <!--Quantidade do item-->
+                        <div class="quantity">
+                            {{beg.quantity}}
+                        </div>
+                        <!--Titulo do item-->
+                        <div class="item_title">
+                            {{beg.titulo}} 
+                        </div>
+                        <!--Tamanho do item-->
+                        <div class="item_size">
+                            {{beg.tamanho.tamanho}} 
+                        </div>
+                        <!--Valor do item-->
+                        <div class="item_price ">
+                            R$ {{beg.valor}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="payment">
+                <h2>Pagamento</h2>
+                <div class="form_payment">
+                    <p>Escolher forma de pagament!</p>
+                    <ul>
+                        <li>Pix</li>
+                        <li>Cartão</li>
+                        <li>Dinheiro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="third-line">
+            <div class="price">
+                <p>Frete: R$ 5,00</p>
+                <p>Total: R$ 00,00</p>
+            </div>
+            <div class="request">
+                <a href="#">Pedir</a>
+            </div>
+        </div>
+    </div>
+</div>
