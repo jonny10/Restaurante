@@ -3,7 +3,7 @@ module.exports = {
         if(req.isAuthenticated()){
             return next()
         }
-        res.render("naoUsuario")
+        res.render("main/naoUsuario")
     },
 
     eAdmin:  (req, res, next) => {
@@ -12,6 +12,15 @@ module.exports = {
                 return next()
             }
         }
-        res.render("naoAdmin")
+        res.render("main/naoAdmin")
+    },
+
+    begEnough: (req, res, next) => {
+        if(req.app.locals.beg) {
+            return next()
+        } else {
+            req.flash("error_msg", "Adicione ao menos 1 item a sua sacola!")
+            res.redirect('/')
+        }
     }
 }

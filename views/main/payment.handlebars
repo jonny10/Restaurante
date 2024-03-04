@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="replace">
-                <a href="/">Trocar</a>
+                <a onclick="travarTela()" href="/">Trocar</a>
             </div>
         </div>
         <div class="second-line">
@@ -37,7 +37,7 @@
                         </div>
                         <!--Valor do item-->
                         <div class="item_price ">
-                            R$ {{beg.valor}}
+                            R$ {{beg.total}}
                         </div>
                     </div>
                 {{/each}}
@@ -56,8 +56,10 @@
         </div>
         <div class="third-line">
             <div class="price">
-                <p>Frete: R$ 5,00</p>
-                <p>Total: R$ 00,00</p>
+                <p>Frete: R$ 00,00</p>
+                {{#with valueTotal as | valueTotal |}}
+                <p>Total: R$ {{valueTotal}}</p>
+                {{/with}}
             </div>
             <div class="request">
                 <a href="#">Pedir</a>

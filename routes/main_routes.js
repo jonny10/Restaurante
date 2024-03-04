@@ -4,6 +4,9 @@ const router = express.Router()
 const Item = require("../models/Item")
 const Cronograma = require("../models/Cronograma")
 const Tamanho = require("../models/Tamanho")
+const {eUsuario} = require("../helpers/acesso")
+const {begEnough} = require("../helpers/acesso")
+const {somarTotal} = require("../helpers/somarTotal")
 
 
 // Rotas
@@ -77,29 +80,27 @@ const Tamanho = require("../models/Tamanho")
     do objeto e caso já tenha esse item, ele adiciona mais 1 a quantidade, e caso não tenha ele define o item com a quantidade 1 e adiciona a sacola
     e após isso redireciona a página inicial novamente*/
         router.get("/addbag/:id", function(req, res){
-            console.log("testando testando testando testando")
             Item.findOne({
                 include: Tamanho,
                 where: {
                     id: req.params.id
                 }
             }).then((item) => {
-                console.log("Entrei no then")
                 id_do_item = item['dataValues']['id']
                 if(req.app.locals.beg){
-                    console.log("tem item")
                     if(req.app['locals']['beg'][id_do_item]){
                         req.app['locals']['beg'][id_do_item]['quantity']++
+                        req.app['locals']['beg'][id_do_item]['total'] = req.app['locals']['beg'][id_do_item]['valor'] * req.app['locals']['beg'][id_do_item]['quantity']
                     }else{
                         item['dataValues']['quantity'] = 1
+                        item['dataValues']['total'] = item['dataValues']['valor']
                         req.app['locals']['beg'][item.dataValues.id] = item.dataValues
                     }
                 }else{
-                    console.log("nao tem item")
                     item['dataValues']['quantity'] = 1
+                    item['dataValues']['total'] = item['dataValues']['valor']
                     req.app.locals.beg = {}
                     req.app['locals']['beg'][item.dataValues.id] = item.dataValues
-                    console.log(req.app.locals.beg)
                 }
                 res.redirect("/")
             }).catch((err) => {
@@ -113,7 +114,7 @@ const Tamanho = require("../models/Tamanho")
     e redireciona a tela inicial*/
         router.get("/cleanbag", function(req, res){
             try{
-                req.app.locals.beg = {}
+                delete req.app.locals.beg
                 res.redirect("/")
             } catch (error) {
                 req.flash("error_msg", "Não foi possivel limpar a sacola, tente novamente! " + error)
@@ -128,6 +129,7 @@ const Tamanho = require("../models/Tamanho")
             try {
                 id = req.params.id
                 req.app['locals']['beg'][id]['quantity']++
+                req.app['locals']['beg'][id_do_item]['total'] = req.app['locals']['beg'][id_do_item]['valor'] * req.app['locals']['beg'][id_do_item]['quantity']
                 res.redirect("/")
             } catch (error) {
                 req.flash("error_msg", "Não aumentar a quantidade do item, tente novamente! " + error)
@@ -143,8 +145,12 @@ const Tamanho = require("../models/Tamanho")
             try {
                 id = req.params.id
                 req.app['locals']['beg'][id]['quantity']--
+                req.app['locals']['beg'][id_do_item]['total'] = req.app['locals']['beg'][id_do_item]['valor'] * req.app['locals']['beg'][id_do_item]['quantity']
                 if(req.app['locals']['beg'][id]['quantity'] == 0){
                     delete req.app['locals']['beg'][id]
+                    if(Object.keys(req.app.locals.beg).length == 0) {
+                        delete req.app.locals.beg
+                    }
                 }
                 res.redirect("/")
             } catch (error) {
@@ -155,8 +161,8 @@ const Tamanho = require("../models/Tamanho")
 
     //Sacola
     /*Rota para sacola */
-        router.get("/sacola", function(req, res){
-            console.log(res.locals.user)
+        router.get("/sacola", begEnough, eUsuario, somarTotal, function(req, res){
+            console.log(req.app.locals.beg)
             res.render("main/payment")
         })
 

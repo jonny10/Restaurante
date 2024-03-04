@@ -205,6 +205,10 @@ definido como y mandatory*/
     margin-right: 1rem;
 }
 
+.item_size {
+    margin-right: 1rem;
+}
+
 /*Definindo que a última informação do item(sendo ele o valor) tenha uma margem a direita de 5 pixels
 e uma margem automatica a esquerda e nenhum espaçamento*/
 .info_item:last-child {
